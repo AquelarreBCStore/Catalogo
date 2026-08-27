@@ -1,4 +1,13 @@
-Categoria,Nombre,Precio,PrecioRebaja,Estado,Imagen,Descripcion
-Peluquería,Keratina Revolution,500,,Disponible,,Venta por onza
-Peluquería,Botox Vegano,400,,Disponible,,Venta por onza
-Peluquería,Peróxido,200,,Disponible,,Venta por onza
+Categoria	Nombre	Precio	PrecioRebaja	Estado	Imagen	Descripcion
+PELUQUERÍA	Keratina Revolution	500		Disponible 		Venta por onza
+PELUQUERÍA	Botox Vegano	400		Disponible 		Venta por onza
+PELUQUERÍA	Peróxido 	200		Disponible 		Venta por onza
+PERFUMERÍA	Colonias 	2500		Disponible		
+PERFUMERÍA	Perfume Black Flower	3500		Disponible 		
+MANICURA•PEDICURA 	Monómero secado medio	500		Disponible 		Venta por onza
+MANICURA•PEDICURA	Polímero acrílico Transparente 	500		Disponible 		Venta por onza
+PELUQUERÍA 	Polvo Decolorante	300		Disponible 		Venta por onza
+PELUQUERÍA 	Guantes	100		Disponible 		Par
+MAQUILLAJE	Lápiz labial	300	250	Disponible 		
+BISUTERÍA 	Aretes de Resina Epóxica	600		Disponible 		
+BISUTERÍA	Anillos de Acero Inoxidable 	700	500	Disponible 		
