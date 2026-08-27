@@ -1,66 +1,301 @@
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Catálogo de Productos</title>
+  <title>Aquelarre Beauty Concept Store</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --bg: #070709;
+      --card-bg: #111115;
+      --gold: #d4af37;
+      --gold-light: #f3e5ab;
+      --text: #f5f5f5;
+      --text-muted: #a0a0aa;
+      --border: #26241e;
+      --green-wa: #25d366;
+    }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f6f9; padding: 20px; color: #333; }
-    h1 { text-align: center; margin-bottom: 25px; color: #2c3e50; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 15px; max-width: 1000px; margin: 0 auto; }
-    .card { background: white; border-radius: 10px; padding: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: space-between; text-align: center; border: 1px solid #e1e4e8; }
-    .card h3 { font-size: 1.1em; color: #1a1a1a; margin-bottom: 8px; }
-    .precio { font-size: 1.2em; font-weight: bold; color: #27ae60; margin-top: 5px; }
-    .loading { text-align: center; font-size: 1.1em; color: #7f8c8d; grid-column: 1 / -1; padding: 40px; }
+    body { font-family: 'Montserrat', sans-serif; background: var(--bg); color: var(--text); padding-bottom: 110px; }
+
+    /* Top Bar */
+    .top-announcement { background: linear-gradient(90deg, #1a150a, #33260c, #1a150a); color: var(--gold-light); text-align: center; padding: 7px; font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase; border-bottom: 1px solid var(--border); }
+
+    /* Header con Logo y Humo */
+    header { text-align: center; padding: 25px 15px 15px; background: radial-gradient(circle at top, #1c160c 0%, var(--bg) 80%); }
+    .logo-container { max-width: 320px; margin: 0 auto 15px; position: relative; }
+    .logo-img { width: 100%; height: auto; border-radius: 50%; box-shadow: 0 0 35px rgba(212, 175, 55, 0.25); }
+    
+    .contact-box { max-width: 500px; margin: 15px auto 0; background: rgba(18, 18, 21, 0.8); border: 1px solid var(--border); border-radius: 15px; padding: 15px; font-size: 0.82rem; }
+    .contact-row { display: flex; justify-content: center; align-items: center; gap: 8px; margin-bottom: 6px; color: var(--text-muted); flex-wrap: wrap; }
+    .contact-row strong { color: var(--gold); }
+    .btn-call-direct { display: inline-flex; align-items: center; gap: 6px; background: rgba(212,175,55,0.15); border: 1px solid var(--gold); color: var(--gold); padding: 5px 12px; border-radius: 20px; text-decoration: none; font-weight: 600; font-size: 0.78rem; margin-top: 4px; }
+
+    /* Buscador & Categorías */
+    .controls { max-width: 900px; margin: 20px auto 10px; padding: 0 15px; }
+    .search-input { width: 100%; padding: 14px 20px; border-radius: 25px; border: 1px solid var(--border); background: var(--card-bg); color: #fff; font-size: 0.9rem; outline: none; margin-bottom: 15px; }
+    .search-input:focus { border-color: var(--gold); }
+
+    .cat-slider { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 10px; scrollbar-width: none; }
+    .cat-slider::-webkit-scrollbar { display: none; }
+    .cat-btn { background: var(--card-bg); border: 1px solid var(--border); color: var(--text-muted); padding: 8px 16px; border-radius: 20px; font-size: 0.78rem; white-space: nowrap; cursor: pointer; font-weight: 500; transition: 0.3s; }
+    .cat-btn.active { background: var(--gold); color: #000; font-weight: 700; border-color: var(--gold); }
+
+    /* Grid de Productos */
+    .container { max-width: 900px; margin: 0 auto; padding: 0 15px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 15px; }
+    .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; position: relative; transition: transform 0.2s; }
+    .card:active { transform: scale(0.98); }
+    .card-img-wrap { width: 100%; height: 160px; position: relative; background: #000; cursor: pointer; }
+    .card-img { width: 100%; height: 100%; object-fit: cover; }
+    
+    .badge { position: absolute; top: 8px; left: 8px; padding: 4px 8px; border-radius: 6px; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; }
+    .badge-offer { background: var(--gold); color: #000; }
+    .badge-out { background: #333; color: #fff; }
+
+    .card-content { padding: 12px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+    .card-title { font-size: 0.85rem; font-weight: 600; color: var(--text); margin-bottom: 6px; line-height: 1.2; }
+    
+    .price-box { margin: 8px 0; }
+    .price { font-size: 1.05rem; font-weight: 700; color: var(--gold); }
+    .price-old { font-size: 0.78rem; text-decoration: line-through; color: var(--text-muted); margin-right: 4px; }
+
+    .btn-add { width: 100%; background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 8px; border-radius: 8px; font-weight: 600; font-size: 0.8rem; cursor: pointer; transition: 0.3s; }
+    .btn-add:hover { background: var(--gold); color: #000; }
+    .btn-add:disabled { border-color: #333; color: #555; cursor: not-allowed; }
+
+    /* Carrito Flotante */
+    .cart-bar { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: calc(100% - 30px); max-width: 500px; background: linear-gradient(135deg, #d4af37, #b8860b); color: #000; padding: 14px 22px; border-radius: 30px; display: flex; justify-content: space-between; align-items: center; font-weight: 700; box-shadow: 0 10px 30px rgba(0,0,0,0.9); cursor: pointer; z-index: 99; }
+    .cart-btn-wa { background: #000; color: #fff; padding: 6px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; }
+
+    /* Botón Flotante de Llamada Directa */
+    .float-call { position: fixed; bottom: 85px; right: 15px; background: var(--gold); color: #000; width: 45px; height: 45px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 1.3rem; box-shadow: 0 5px 15px rgba(0,0,0,0.5); text-decoration: none; z-index: 98; }
+
+    /* Modal Detalle Producto */
+    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000; justify-content: center; align-items: center; padding: 20px; }
+    .modal-card { background: var(--card-bg); border: 1px solid var(--gold); border-radius: 16px; max-width: 420px; width: 100%; overflow: hidden; position: relative; }
+    .modal-img { width: 100%; height: 230px; object-fit: cover; }
+    .modal-body { padding: 20px; }
+    .modal-title { font-size: 1.1rem; color: var(--gold); margin-bottom: 8px; font-weight: 700; }
+    .modal-desc { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px; line-height: 1.4; }
+    .close-modal { position: absolute; top: 10px; right: 12px; background: rgba(0,0,0,0.7); color: #fff; border: none; width: 30px; height: 30px; border-radius: 50%; font-size: 1rem; cursor: pointer; }
   </style>
 </head>
 <body>
 
-  <h1>Catálogo de Productos</h1>
-  <div id="catalogo" class="grid">
-    <div class="loading">Cargando productos...</div>
+  <div class="top-announcement">✨ Aquelarre Beauty Concept Store ✨</div>
+
+  <header>
+    <div class="logo-container">
+      <!-- Muestra el logo oficial de la marca -->
+      <img src="1001727846.png" alt="Aquelarre Logo" class="logo-img" onerror="this.src='https://via.placeholder.com/300/000000/d4af37?text=AQUELARRE'">
+    </div>
+    
+    <div class="contact-box">
+      <div class="contact-row"><strong>📍 Dirección:</strong> Infante 5B, Reparto Militar, Caney</div>
+      <div class="contact-row"><strong>✉️ Correo:</strong> ivettealemancruz@gmail.com</div>
+      <div class="contact-row">
+        <strong>📞 Información & Citas:</strong> +5354688338
+        <a href="tel:+5354688338" class="btn-call-direct">📞 Llamar</a>
+      </div>
+      <div class="contact-row"><strong>🛍️ Pedidos WhatsApp:</strong> +5350596880</div>
+    </div>
+  </header>
+
+  <div class="controls">
+    <input type="text" class="search-input" id="search" placeholder="Buscar producto o categoría..." oninput="filtrar()">
+    <div class="cat-slider" id="categories">
+      <!-- Se generan dinámicamente -->
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="grid" id="catalogo">
+      <div style="text-align:center; grid-column:1/-1; color:var(--text-muted); padding:30px;">Cargando catálogo...</div>
+    </div>
+  </div>
+
+  <!-- Botón de llamada rápida -->
+  <a href="tel:+5354688338" class="float-call" title="Llamar para información">📞</a>
+
+  <!-- Barra inferior de Carrito -->
+  <div class="cart-bar" id="cartBar" style="display:none;" onclick="enviarPedidoWA()">
+    <div>🛒 <span id="cartCount">0</span> Ítems | <span id="cartTotal">$0</span></div>
+    <div class="cart-btn-wa">Pedir por WhatsApp 📲</div>
+  </div>
+
+  <!-- Modal Detalle del Producto -->
+  <div class="modal" id="modalProduct">
+    <div class="modal-card">
+      <button class="close-modal" onclick="cerrarModal()">✕</button>
+      <img id="mImg" src="" class="modal-img">
+      <div class="modal-body">
+        <div id="mTitle" class="modal-title"></div>
+        <div id="mDesc" class="modal-desc"></div>
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <div id="mPrice" class="price" style="font-size:1.3rem;"></div>
+          <button id="mBtnAdd" class="btn-add" style="width:auto; padding:8px 20px;">Añadir al carrito</button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <script>
-    // Carga dinámica del archivo articulos.csv generado por Google Sheets
+    const CATEGORIAS_OFICIALES = [
+      'Todas', 'Peluquería', 'Perfumería', 'Manicura•Pedicura', 
+      'Maquillaje', 'Ropa•Calzado•Accesorios', 
+      'Manualidades•Regalos personalizados', 'Bisutería', 
+      'Misceláneas', 'SexShop'
+    ];
+
+    let productos = [];
+    let carrito = {};
+    let catActual = 'Todas';
+
+    // Responsable de ventas por WhatsApp
+    const TEL_VENTAS_WA = '5350596880';
+
     fetch('articulos.csv?t=' + new Date().getTime())
-      .then(response => {
-        if (!response.ok) throw new Error('No se pudo cargar el catálogo');
-        return response.text();
-      })
-      .then(data => {
-        const lineas = data.trim().split('\n');
-        const contenedor = document.getElementById('catalogo');
-        contenedor.innerHTML = '';
+      .then(r => r.text())
+      .then(csv => {
+        const lineas = csv.trim().split('\n');
+        if (lineas.length <= 1) return;
 
-        if (lineas.length <= 1) {
-          contenedor.innerHTML = '<div class="loading">No hay productos disponibles por el momento.</div>';
-          return;
-        }
+        productos = lineas.slice(1).map((linea, idx) => {
+          const c = linea.split(',');
+          return {
+            id: idx,
+            cat: c[0] ? c[0].replace(/^"|"$/g, '').trim() : 'Misceláneas',
+            nombre: c[1] ? c[1].replace(/^"|"$/g, '').trim() : '',
+            precio: parseFloat(c[2] ? c[2].replace(/^"|"$/g, '').trim() : 0) || 0,
+            precioOld: c[3] ? c[3].replace(/^"|"$/g, '').trim() : '',
+            estado: c[4] ? c[4].replace(/^"|"$/g, '').trim() : 'Disponible',
+            img: c[5] ? c[5].replace(/^"|"$/g, '').trim() : 'https://via.placeholder.com/200/111115/d4af37?text=Aquelarre',
+            desc: c[6] ? c[6].replace(/^"|"$/g, '').trim() : ''
+          };
+        }).filter(p => p.nombre && p.nombre.toLowerCase() !== 'nombre');
 
-        // Omitir cabecera (primera línea) y renderizar productos
-        lineas.slice(1).forEach(linea => {
-          if (!linea.trim()) return;
-          const columnas = linea.split(',');
-          const nombre = columnas[0] ? columnas[0].replace(/^"|"$/g, '') : 'Producto';
-          const precio = columnas[1] ? columnas[1].replace(/^"|"$/g, '') : '0';
-
-          const card = document.createElement('div');
-          card.className = 'card';
-          card.innerHTML = `
-            <h3>${nombre}</h3>
-            <div class="precio">$${precio}</div>
-          `;
-          contenedor.appendChild(card);
-        });
-      })
-      .catch(error => {
-        document.getElementById('catalogo').innerHTML = '<div class="loading">Error al cargar el catálogo. Verifica que el archivo articulos.csv exista.</div>';
+        cargarCategorias();
+        renderizar();
       });
-  </script>
 
+    function cargarCategorias() {
+      const cont = document.getElementById('categories');
+      cont.innerHTML = CATEGORIAS_OFICIALES.map(c => `
+        <button class="cat-btn ${c==='Todas'?'active':''}" onclick="filtrarCat('${c}', this)">${c}</button>
+      `).join('');
+    }
+
+    function filtrarCat(cat, el) {
+      document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+      el.classList.add('active');
+      catActual = cat;
+      renderizar();
+    }
+
+    function renderizar() {
+      const q = document.getElementById('search').value.toLowerCase();
+      const cont = document.getElementById('catalogo');
+      
+      const lista = productos.filter(p => {
+        const coincideCat = catActual === 'Todas' || p.cat.toLowerCase() === catActual.toLowerCase();
+        const coincideQ = p.nombre.toLowerCase().includes(q) || p.cat.toLowerCase().includes(q);
+        return coincideCat && coincideQ;
+      });
+
+      if (lista.length === 0) {
+        cont.innerHTML = '<div style="text-align:center; grid-column:1/-1; color:var(--text-muted); padding:30px;">No se encontraron artículos disponibles.</div>';
+        return;
+      }
+
+      cont.innerHTML = lista.map(p => {
+        const esAgotado = p.estado.toLowerCase() === 'agotado';
+        const esOferta = p.estado.toLowerCase() === 'oferta';
+
+        return `
+          <div class="card">
+            <div class="card-img-wrap" onclick="abrirModal(${p.id})">
+              ${esOferta ? '<span class="badge badge-offer">Oferta</span>' : ''}
+              ${esAgotado ? '<span class="badge badge-out">Agotado</span>' : ''}
+              <img src="${p.img}" class="card-img" alt="${p.nombre}" onerror="this.src='https://via.placeholder.com/200/111115/d4af37?text=Aquelarre'">
+            </div>
+            <div class="card-content">
+              <div>
+                <div class="card-title">${p.nombre}</div>
+              </div>
+              <div>
+                <div class="price-box">
+                  ${p.precioOld ? `<span class="price-old">$${p.precioOld}</span>` : ''}
+                  <span class="price">$${p.precio}</span>
+                </div>
+                <button class="btn-add" ${esAgotado ? 'disabled' : ''} onclick="agregar(${p.id})">
+                  ${esAgotado ? 'Agotado' : '+ Añadir'}
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function agregar(id) {
+      carrito[id] = (carrito[id] || 0) + 1;
+      actualizarCarrito();
+    }
+
+    function actualizarCarrito() {
+      let cant = 0, total = 0;
+      Object.keys(carrito).forEach(id => {
+        const p = productos.find(prod => prod.id == id);
+        if (p) { cant += carrito[id]; total += p.precio * carrito[id]; }
+      });
+
+      const bar = document.getElementById('cartBar');
+      if (cant > 0) {
+        bar.style.display = 'flex';
+        document.getElementById('cartCount').innerText = cant;
+        document.getElementById('cartTotal').innerText = `$${total}`;
+      } else { bar.style.display = 'none'; }
+    }
+
+    function abrirModal(id) {
+      const p = productos.find(prod => prod.id == id);
+      if (!p) return;
+      document.getElementById('mImg').src = p.img;
+      document.getElementById('mTitle').innerText = p.nombre;
+      document.getElementById('mDesc').innerText = p.desc || 'Producto exclusivo de Aquelarre Beauty Concept Store.';
+      document.getElementById('mPrice').innerText = `$${p.precio}`;
+      
+      const btn = document.getElementById('mBtnAdd');
+      btn.disabled = p.estado.toLowerCase() === 'agotado';
+      btn.innerText = p.estado.toLowerCase() === 'agotado' ? 'Agotado' : '+ Añadir al Carrito';
+      btn.onclick = () => { agregar(p.id); cerrarModal(); };
+      
+      document.getElementById('modalProduct').style.display = 'flex';
+    }
+
+    function cerrarModal() { document.getElementById('modalProduct').style.display = 'none'; }
+
+    function enviarPedidoWA() {
+      let msg = "✨ *NUEVA ORDEN DE COMPRA - AQUELARRE BEAUTY* ✨\n\n";
+      let total = 0;
+
+      Object.keys(carrito).forEach(id => {
+        const cant = carrito[id];
+        const p = productos.find(prod => prod.id == id);
+        if (p) {
+          const sub = p.precio * cant;
+          total += sub;
+          msg += `• ${p.nombre} (x${cant}) - $${sub}\n`;
+        }
+      });
+
+      msg += `\n*Total a pagar: $${total}*\n\nPor favor, confirmar disponibilidad y método de entrega.`;
+      window.open(`https://wa.me/${TEL_VENTAS_WA}?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+
+    function filtrar() { renderizar(); }
+  </script>
 </body>
 </html>
