@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html><!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -7,122 +7,132 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #070709;
-      --card-bg: #111115;
+      --bg: #000000;
+      --card-bg: #0d0d0f;
       --gold: #d4af37;
       --gold-light: #f3e5ab;
-      --text: #f5f5f5;
-      --text-muted: #a0a0aa;
-      --border: #26241e;
-      --green-wa: #25d366;
+      --text: #ffffff;
+      --border: #22201a;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Montserrat', sans-serif; background: var(--bg); color: var(--text); padding-bottom: 110px; }
-
-    /* Top Bar */
-    .top-announcement { background: linear-gradient(90deg, #1a150a, #33260c, #1a150a); color: var(--gold-light); text-align: center; padding: 7px; font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase; border-bottom: 1px solid var(--border); }
+    body { font-family: 'Montserrat', sans-serif; background: var(--bg); color: var(--text); padding-bottom: 90px; }
 
     /* Header con Logo y Humo */
-    header { text-align: center; padding: 25px 15px 15px; background: radial-gradient(circle at top, #1c160c 0%, var(--bg) 80%); }
-    .logo-container { max-width: 320px; margin: 0 auto 15px; position: relative; }
-    .logo-img { width: 100%; height: auto; border-radius: 50%; box-shadow: 0 0 35px rgba(212, 175, 55, 0.25); }
-    
-    .contact-box { max-width: 500px; margin: 15px auto 0; background: rgba(18, 18, 21, 0.8); border: 1px solid var(--border); border-radius: 15px; padding: 15px; font-size: 0.82rem; }
-    .contact-row { display: flex; justify-content: center; align-items: center; gap: 8px; margin-bottom: 6px; color: var(--text-muted); flex-wrap: wrap; }
-    .contact-row strong { color: var(--gold); }
-    .btn-call-direct { display: inline-flex; align-items: center; gap: 6px; background: rgba(212,175,55,0.15); border: 1px solid var(--gold); color: var(--gold); padding: 5px 12px; border-radius: 20px; text-decoration: none; font-weight: 600; font-size: 0.78rem; margin-top: 4px; }
+    header { text-align: center; padding: 25px 15px 15px; background: var(--bg); border-bottom: 1px solid var(--border); }
+    .logo-container { max-width: 280px; margin: 0 auto; }
+    .logo-img { width: 100%; height: auto; display: block; border-radius: 50%; box-shadow: 0 0 30px rgba(212, 175, 55, 0.2); }
 
-    /* Buscador & Categorías */
-    .controls { max-width: 900px; margin: 20px auto 10px; padding: 0 15px; }
-    .search-input { width: 100%; padding: 14px 20px; border-radius: 25px; border: 1px solid var(--border); background: var(--card-bg); color: #fff; font-size: 0.9rem; outline: none; margin-bottom: 15px; }
+    /* Buscador General */
+    .search-box { padding: 12px 15px; background: var(--bg); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--border); }
+    .search-input { width: 100%; padding: 12px 18px; border-radius: 20px; border: 1px solid var(--border); background: var(--card-bg); color: #fff; font-size: 0.9rem; outline: none; }
     .search-input:focus { border-color: var(--gold); }
 
-    .cat-slider { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 10px; scrollbar-width: none; }
-    .cat-slider::-webkit-scrollbar { display: none; }
-    .cat-btn { background: var(--card-bg); border: 1px solid var(--border); color: var(--text-muted); padding: 8px 16px; border-radius: 20px; font-size: 0.78rem; white-space: nowrap; cursor: pointer; font-weight: 500; transition: 0.3s; }
-    .cat-btn.active { background: var(--gold); color: #000; font-weight: 700; border-color: var(--gold); }
+    /* Estilo Shein Layout (Sidebar Izquierda + Contenido Derecha) */
+    .shop-layout { display: flex; min-height: 500px; }
+    
+    /* Menú Lateral Izquierdo */
+    .sidebar { width: 35%; background: #08080a; border-right: 1px solid var(--border); padding: 10px 0; }
+    .sidebar-item { padding: 15px 10px; font-size: 0.75rem; font-weight: 500; color: var(--text); cursor: pointer; border-left: 3px solid transparent; transition: 0.2s; text-transform: uppercase; line-height: 1.3; }
+    .sidebar-item.active { background: #121215; border-left-color: var(--gold); color: var(--gold); font-weight: 700; }
 
-    /* Grid de Productos */
-    .container { max-width: 900px; margin: 0 auto; padding: 0 15px; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 15px; }
-    .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; position: relative; transition: transform 0.2s; }
-    .card:active { transform: scale(0.98); }
-    .card-img-wrap { width: 100%; height: 160px; position: relative; background: #000; cursor: pointer; }
+    /* Contenido Productos Derecha */
+    .content-area { width: 65%; padding: 15px; background: var(--bg); }
+    .category-title { font-family: 'Cinzel', serif; font-size: 1rem; color: var(--gold); margin-bottom: 15px; text-transform: uppercase; border-bottom: 1px solid var(--border); padding-bottom: 5px; }
+    
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px; }
+    .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; position: relative; }
+    .card-img-wrap { width: 100%; height: 130px; position: relative; background: #000; cursor: pointer; }
     .card-img { width: 100%; height: 100%; object-fit: cover; }
     
-    .badge { position: absolute; top: 8px; left: 8px; padding: 4px 8px; border-radius: 6px; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; }
+    .badge { position: absolute; top: 6px; left: 6px; padding: 3px 6px; border-radius: 4px; font-size: 0.6rem; font-weight: 700; text-transform: uppercase; }
     .badge-offer { background: var(--gold); color: #000; }
     .badge-out { background: #333; color: #fff; }
 
-    .card-content { padding: 12px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
-    .card-title { font-size: 0.85rem; font-weight: 600; color: var(--text); margin-bottom: 6px; line-height: 1.2; }
+    .card-content { padding: 10px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+    .card-title { font-size: 0.78rem; font-weight: 600; color: #fff; margin-bottom: 4px; }
+    .card-desc { font-size: 0.68rem; color: #fff; margin-bottom: 8px; line-height: 1.3; }
     
-    .price-box { margin: 8px 0; }
-    .price { font-size: 1.05rem; font-weight: 700; color: var(--gold); }
-    .price-old { font-size: 0.78rem; text-decoration: line-through; color: var(--text-muted); margin-right: 4px; }
+    .price-box { margin-bottom: 8px; }
+    .price { font-size: 0.95rem; font-weight: 700; color: var(--gold); }
+    .price-old { font-size: 0.7rem; text-decoration: line-through; color: #888; margin-right: 4px; }
 
-    .btn-add { width: 100%; background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 8px; border-radius: 8px; font-weight: 600; font-size: 0.8rem; cursor: pointer; transition: 0.3s; }
+    .btn-add { width: 100%; background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 6px; border-radius: 6px; font-weight: 600; font-size: 0.72rem; cursor: pointer; transition: 0.3s; }
     .btn-add:hover { background: var(--gold); color: #000; }
     .btn-add:disabled { border-color: #333; color: #555; cursor: not-allowed; }
 
-    /* Carrito Flotante */
-    .cart-bar { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: calc(100% - 30px); max-width: 500px; background: linear-gradient(135deg, #d4af37, #b8860b); color: #000; padding: 14px 22px; border-radius: 30px; display: flex; justify-content: space-between; align-items: center; font-weight: 700; box-shadow: 0 10px 30px rgba(0,0,0,0.9); cursor: pointer; z-index: 99; }
-    .cart-btn-wa { background: #000; color: #fff; padding: 6px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; }
+    /* Sección de Contacto al Final (Justificada y Estilo Tarjeta) */
+    .footer-contact { background: #050507; border-top: 1px solid var(--border); padding: 25px 20px; margin-top: 30px; text-align: left; }
+    .footer-container { max-width: 600px; margin: 0 auto; }
+    .footer-heading { font-family: 'Cinzel', serif; color: var(--gold); font-size: 1.1rem; margin-bottom: 12px; text-transform: uppercase; }
+    .footer-text { font-size: 0.85rem; color: #ffffff; line-height: 1.6; text-align: justify; margin-bottom: 20px; }
+    
+    .footer-icons { display: flex; gap: 15px; justify-content: flex-start; flex-wrap: wrap; margin-top: 15px; }
+    .f-icon-btn { display: flex; align-items: center; justify-content: center; width: 42px; height: 42px; background: rgba(212,175,55,0.1); border: 1px solid var(--gold); border-radius: 50%; color: var(--gold); font-size: 1.1rem; text-decoration: none; transition: 0.3s; }
+    .f-icon-btn:hover { background: var(--gold); color: #000; }
 
-    /* Botón Flotante de Llamada Directa */
-    .float-call { position: fixed; bottom: 85px; right: 15px; background: var(--gold); color: #000; width: 45px; height: 45px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 1.3rem; box-shadow: 0 5px 15px rgba(0,0,0,0.5); text-decoration: none; z-index: 98; }
+    /* Carrito Flotante Inferior */
+    .cart-bar { position: fixed; bottom: 15px; left: 50%; transform: translateX(-50%); width: calc(100% - 25px); max-width: 480px; background: linear-gradient(135deg, #d4af37, #b8860b); color: #000; padding: 12px 20px; border-radius: 30px; display: flex; justify-content: space-between; align-items: center; font-weight: 700; box-shadow: 0 5px 20px rgba(0,0,0,0.8); cursor: pointer; z-index: 101; font-size: 0.9rem; }
+    .cart-btn-wa { background: #000; color: #fff; padding: 5px 12px; border-radius: 15px; font-size: 0.72rem; }
 
-    /* Modal Detalle Producto */
+    /* Modal Detalle */
     .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000; justify-content: center; align-items: center; padding: 20px; }
-    .modal-card { background: var(--card-bg); border: 1px solid var(--gold); border-radius: 16px; max-width: 420px; width: 100%; overflow: hidden; position: relative; }
-    .modal-img { width: 100%; height: 230px; object-fit: cover; }
-    .modal-body { padding: 20px; }
-    .modal-title { font-size: 1.1rem; color: var(--gold); margin-bottom: 8px; font-weight: 700; }
-    .modal-desc { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px; line-height: 1.4; }
-    .close-modal { position: absolute; top: 10px; right: 12px; background: rgba(0,0,0,0.7); color: #fff; border: none; width: 30px; height: 30px; border-radius: 50%; font-size: 1rem; cursor: pointer; }
+    .modal-card { background: var(--card-bg); border: 1px solid var(--gold); border-radius: 14px; max-width: 380px; width: 100%; overflow: hidden; position: relative; }
+    .modal-img { width: 100%; height: 200px; object-fit: cover; }
+    .modal-body { padding: 18px; }
+    .close-modal { position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.8); color: #fff; border: none; width: 28px; height: 28px; border-radius: 50%; cursor: pointer; }
   </style>
 </head>
 <body>
 
-  <div class="top-announcement">✨ Aquelarre Beauty Concept Store ✨</div>
-
   <header>
     <div class="logo-container">
-      <!-- Muestra el logo oficial de la marca -->
       <img src="1001727846.png" alt="Aquelarre Logo" class="logo-img" onerror="this.src='https://via.placeholder.com/300/000000/d4af37?text=AQUELARRE'">
-    </div>
-    
-    <div class="contact-box">
-      <div class="contact-row"><strong>📍 Dirección:</strong> Infante 5B, Reparto Militar, Caney</div>
-      <div class="contact-row"><strong>✉️ Correo:</strong> ivettealemancruz@gmail.com</div>
-      <div class="contact-row">
-        <strong>📞 Información & Citas:</strong> +5354688338
-        <a href="tel:+5354688338" class="btn-call-direct">📞 Llamar</a>
-      </div>
-      <div class="contact-row"><strong>🛍️ Pedidos WhatsApp:</strong> +5350596880</div>
     </div>
   </header>
 
-  <div class="controls">
-    <input type="text" class="search-input" id="search" placeholder="Buscar producto o categoría..." oninput="filtrar()">
-    <div class="cat-slider" id="categories">
-      <!-- Se generan dinámicamente -->
+  <div class="search-box">
+    <input type="text" class="search-input" id="search" placeholder="Buscar productos en Aquelarre..." oninput="renderizar()">
+  </div>
+
+  <!-- Layout Estilo Shein -->
+  <div class="shop-layout">
+    <div class="sidebar" id="sidebar">
+      <!-- Categorías cargadas dinámicamente -->
+    </div>
+    <div class="content-area">
+      <div class="category-title" id="catTitleName">Categoría</div>
+      <div class="grid" id="catalogo">
+        <div style="color:#fff; font-size:0.8rem;">Cargando...</div>
+      </div>
     </div>
   </div>
 
-  <div class="container">
-    <div class="grid" id="catalogo">
-      <div style="text-align:center; grid-column:1/-1; color:var(--text-muted); padding:30px;">Cargando catálogo...</div>
-    </div>
-  </div>
+  <!-- Información del negocio al final (Justificada) -->
+  <footer class="footer-contact">
+    <div class="footer-container">
+      <div class="footer-heading">Aquelarre Beauty Concept Store</div>
+      <div class="footer-text">
+        Bienvenidos a nuestro espacio exclusivo dedicado al realce de la belleza y el bienestar integral. Nos encontramos ubicados en Infante 5B, Reparto Militar, Caney. Para cualquier información o asesoramiento personalizado con la dueña, puede contactarnos directamente al teléfono +5354688338 o a través de nuestro correo electrónico ivettealemancruz@gmail.com. Los pedidos y trámites de compras se procesan de forma rápida y segura mediante nuestro canal oficial de WhatsApp al +5350596880.
+      </div>
+      <div style="font-size:0.82rem; color:#fff; margin-bottom:5px;"><strong>📍 Dirección:</strong> Infante 5B, Reparto Militar, Caney</div>
+      <div style="font-size:0.82rem; color:#fff; margin-bottom:5px;"><strong>✉️ Correo:</strong> ivettealemancruz@gmail.com</div>
+      <div style="font-size:0.82rem; color:#fff; margin-bottom:5px;"><strong>📞 Información:</strong> +5354688338</div>
+      <div style="font-size:0.82rem; color:#fff; margin-bottom:5px;"><strong>💬 Pedidos WhatsApp:</strong> +5350596880</div>
 
-  <!-- Botón de llamada rápida -->
-  <a href="tel:+5354688338" class="float-call" title="Llamar para información">📞</a>
+      <!-- Iconos Flotantes de Contacto -->
+      <div class="footer-icons">
+        <a href="https://wa.me/5350596880" class="f-icon-btn" title="Escribir por WhatsApp" target="_blank">💬</a>
+        <a href="tel:+5354688338" class="f-icon-btn" title="Llamar" target="_blank">📞</a>
+        <a href="mailto:ivettealemancruz@gmail.com" class="f-icon-btn" title="Enviar Correo" target="_blank">✉️</a>
+        <a href="https://maps.google.com/?q=Infante+5B,+Reparto+Militar,+Caney" class="f-icon-btn" title="Ver Ubicación" target="_blank">📍</a>
+      </div>
+    </div>
+  </footer>
 
   <!-- Barra inferior de Carrito -->
   <div class="cart-bar" id="cartBar" style="display:none;" onclick="enviarPedidoWA()">
     <div>🛒 <span id="cartCount">0</span> Ítems | <span id="cartTotal">$0</span></div>
-    <div class="cart-btn-wa">Pedir por WhatsApp 📲</div>
+    <div class="cart-btn-wa">Enviar Pedido 📲</div>
   </div>
 
   <!-- Modal Detalle del Producto -->
@@ -131,11 +141,11 @@
       <button class="close-modal" onclick="cerrarModal()">✕</button>
       <img id="mImg" src="" class="modal-img">
       <div class="modal-body">
-        <div id="mTitle" class="modal-title"></div>
-        <div id="mDesc" class="modal-desc"></div>
+        <div id="mTitle" style="font-size:0.95rem; font-weight:700; color:#fff; margin-bottom:6px;"></div>
+        <div id="mDesc" style="font-size:0.78rem; color:#fff; margin-bottom:12px; line-height:1.4;"></div>
         <div style="display:flex; justify-content:space-between; align-items:center;">
-          <div id="mPrice" class="price" style="font-size:1.3rem;"></div>
-          <button id="mBtnAdd" class="btn-add" style="width:auto; padding:8px 20px;">Añadir al carrito</button>
+          <div id="mPrice" class="price" style="font-size:1.1rem;"></div>
+          <button id="mBtnAdd" class="btn-add" style="width:auto; padding:6px 16px;">+ Añadir</button>
         </div>
       </div>
     </div>
@@ -143,7 +153,7 @@
 
   <script>
     const CATEGORIAS_OFICIALES = [
-      'Todas', 'Peluquería', 'Perfumería', 'Manicura•Pedicura', 
+      'Peluquería', 'Perfumería', 'Manicura•Pedicura', 
       'Maquillaje', 'Ropa•Calzado•Accesorios', 
       'Manualidades•Regalos personalizados', 'Bisutería', 
       'Misceláneas', 'SexShop'
@@ -151,9 +161,7 @@
 
     let productos = [];
     let carrito = {};
-    let catActual = 'Todas';
-
-    // Responsable de ventas por WhatsApp
+    let catActual = CATEGORIAS_OFICIALES[0];
     const TEL_VENTAS_WA = '5350596880';
 
     fetch('articulos.csv?t=' + new Date().getTime())
@@ -171,41 +179,41 @@
             precio: parseFloat(c[2] ? c[2].replace(/^"|"$/g, '').trim() : 0) || 0,
             precioOld: c[3] ? c[3].replace(/^"|"$/g, '').trim() : '',
             estado: c[4] ? c[4].replace(/^"|"$/g, '').trim() : 'Disponible',
-            img: c[5] ? c[5].replace(/^"|"$/g, '').trim() : 'https://via.placeholder.com/200/111115/d4af37?text=Aquelarre',
+            img: c[5] ? c[5].replace(/^"|"$/g, '').trim() : 'https://via.placeholder.com/200/000000/d4af37?text=Aquelarre',
             desc: c[6] ? c[6].replace(/^"|"$/g, '').trim() : ''
           };
         }).filter(p => p.nombre && p.nombre.toLowerCase() !== 'nombre');
 
-        cargarCategorias();
+        cargarSidebar();
         renderizar();
       });
 
-    function cargarCategorias() {
-      const cont = document.getElementById('categories');
+    function cargarSidebar() {
+      const cont = document.getElementById('sidebar');
       cont.innerHTML = CATEGORIAS_OFICIALES.map(c => `
-        <button class="cat-btn ${c==='Todas'?'active':''}" onclick="filtrarCat('${c}', this)">${c}</button>
+        <div class="sidebar-item ${c===catActual?'active':''}" onclick="seleccionarCat('${c}')">${c}</div>
       `).join('');
     }
 
-    function filtrarCat(cat, el) {
-      document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-      el.classList.add('active');
+    function seleccionarCat(cat) {
       catActual = cat;
+      cargarSidebar();
       renderizar();
     }
 
     function renderizar() {
       const q = document.getElementById('search').value.toLowerCase();
       const cont = document.getElementById('catalogo');
+      document.getElementById('catTitleName').innerText = catActual;
       
       const lista = productos.filter(p => {
-        const coincideCat = catActual === 'Todas' || p.cat.toLowerCase() === catActual.toLowerCase();
-        const coincideQ = p.nombre.toLowerCase().includes(q) || p.cat.toLowerCase().includes(q);
+        const coincideCat = p.cat.toLowerCase() === catActual.toLowerCase();
+        const coincideQ = q === '' || p.nombre.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q);
         return coincideCat && coincideQ;
       });
 
       if (lista.length === 0) {
-        cont.innerHTML = '<div style="text-align:center; grid-column:1/-1; color:var(--text-muted); padding:30px;">No se encontraron artículos disponibles.</div>';
+        cont.innerHTML = '<div style="font-size:0.75rem; color:#fff; padding:10px;">No hay artículos en esta categoría.</div>';
         return;
       }
 
@@ -218,11 +226,12 @@
             <div class="card-img-wrap" onclick="abrirModal(${p.id})">
               ${esOferta ? '<span class="badge badge-offer">Oferta</span>' : ''}
               ${esAgotado ? '<span class="badge badge-out">Agotado</span>' : ''}
-              <img src="${p.img}" class="card-img" alt="${p.nombre}" onerror="this.src='https://via.placeholder.com/200/111115/d4af37?text=Aquelarre'">
+              <img src="${p.img}" class="card-img" alt="${p.nombre}" onerror="this.src='https://via.placeholder.com/200/000000/d4af37?text=Aquelarre'">
             </div>
             <div class="card-content">
               <div>
                 <div class="card-title">${p.nombre}</div>
+                ${p.desc ? `<div class="card-desc">${p.desc}</div>` : ''}
               </div>
               <div>
                 <div class="price-box">
@@ -264,12 +273,12 @@
       if (!p) return;
       document.getElementById('mImg').src = p.img;
       document.getElementById('mTitle').innerText = p.nombre;
-      document.getElementById('mDesc').innerText = p.desc || 'Producto exclusivo de Aquelarre Beauty Concept Store.';
+      document.getElementById('mDesc').innerText = p.desc || 'Artículo exclusivo de Aquelarre Beauty Concept Store.';
       document.getElementById('mPrice').innerText = `$${p.precio}`;
       
       const btn = document.getElementById('mBtnAdd');
       btn.disabled = p.estado.toLowerCase() === 'agotado';
-      btn.innerText = p.estado.toLowerCase() === 'agotado' ? 'Agotado' : '+ Añadir al Carrito';
+      btn.innerText = p.estado.toLowerCase() === 'agotado' ? 'Agotado' : '+ Añadir';
       btn.onclick = () => { agregar(p.id); cerrarModal(); };
       
       document.getElementById('modalProduct').style.display = 'flex';
@@ -291,11 +300,10 @@
         }
       });
 
-      msg += `\n*Total a pagar: $${total}*\n\nPor favor, confirmar disponibilidad y método de entrega.`;
+      msg += `\n*Total a pagar: $${total}*\n\nPor favor, confirmar disponibilidad.`;
       window.open(`https://wa.me/${TEL_VENTAS_WA}?text=${encodeURIComponent(msg)}`, '_blank');
     }
-
-    function filtrar() { renderizar(); }
   </script>
 </body>
 </html>
+
