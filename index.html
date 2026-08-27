@@ -259,12 +259,18 @@
     </footer>
 
     <script>
+        // Enlace público CSV de tu hoja de Google Sheets
+        const SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTE2kFqC6R9s9X5h5W6mQ/pub?output=csv'; // Reemplazar con tu URL de publicación CSV si varía
+
         let allProducts = [];
         let currentCategory = 'TODOS';
 
         async function loadCatalog() {
             try {
-                const response = await fetch('articulos.csv');
+                // Intenta leer directamente desde Google Sheets primero; si falla, lee el articulos.csv local
+                let response = await fetch(SHEET_URL).catch(() => fetch('articulos.csv'));
+                if (!response.ok) response = await fetch('articulos.csv');
+                
                 const data = await response.text();
                 parseCSV(data);
             } catch (error) {
@@ -273,16 +279,16 @@
         }
 
         function parseCSV(text) {
-            const lines = text.split('\n');
-            const headers = lines[0].split(',').map(h => h.trim());
-            
+            const lines = text.split(/\r?\n/);
+            if (lines.length < 2) return;
+
             allProducts = [];
             for (let i = 1; i < lines.length; i++) {
                 if (!lines[i].trim()) continue;
                 
-                // Parser simple compatible con comas
-                const row = lines[i].split(',').map(val => val.trim());
-                if (row.length >= headers.length) {
+                // Dividir por comas o tabuladores
+                const row = lines[i].split(/,|\t/).map(val => val.trim().replace(/^"|"$/g, ''));
+                if (row.length >= 2) {
                     allProducts.push({
                         categoria: row[0] || 'General',
                         nombre: row[1] || '',
