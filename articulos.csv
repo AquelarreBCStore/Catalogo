@@ -1,114 +1,124 @@
 Categoria,Nombre,Precio,PrecioRebaja,Estado,Imagen,Descripcion
-PELUQUERÍA,Keratina Revolution,500,,Disponible,,Venta por onza
-PELUQUERÍA,Botox Vegano,400,,Disponible,,Venta por onza
-PELUQUERÍA,Peróxido 40 vol,200,,Disponible,,Venta por onza
-PERFUMERÍA,Colonias,2500,,Disponible,,
-PERFUMERÍA,Perfume Black Flower,3500,,Disponible,,
-MANICURA•PEDICURA,Monómero secado medio,500,,Disponible,,Venta por onza
-MANICURA•PEDICURA,Polímero acrílico Transparente,500,,Disponible,,Venta por onza
-PELUQUERÍA,Polvo Decolorante,300,,Disponible,,Venta por onza
-PELUQUERÍA,Guantes,100,,Disponible,,Par
-MAQUILLAJE,Lápiz labial,300,250,Disponible,,
-BISUTERÍA,Aretes de Resina Epóxica,600,,Disponible,,
-BISUTERÍA,Anillos de Acero Inoxidable,700,500,Disponible,,
-MANICURA•PEDICURA,Bloques,200,,Disponible,,
-MANICURA•PEDICURA,Top Coat 10ml,650,,Agotado,,
-MANICURA•PEDICURA,Top Coat 15ml,950,,Agotado,,
-MANICURA•PEDICURA,Top Coat Natural 10-11ml,300,,Disponible,,
-MANICURA•PEDICURA,Top Coat Natural 12-14ml,350,,Disponible,,
-MANICURA•PEDICURA,Top Coat Natural 15ml,400,,Disponible,,
-MANICURA•PEDICURA,Esmaltes Naturales 10-11ml,300,,Disponible,,
-MANICURA•PEDICURA,Esmaltes Naturales 12-14ml,350,,Disponible,,
-MANICURA•PEDICURA,Esmaltes Naturales 15ml,400,,Disponible,,
-MANICURA•PEDICURA,Limas 80/100,250,,Disponible,,
-MANICURA•PEDICURA,Limas 100/120,250,,Disponible,,
-MANICURA•PEDICURA,Pegamento Pequeño,100,,Disponible,,
-MANICURA•PEDICURA,Lijas Cartón,30,,Disponible,,
-MANICURA•PEDICURA,Esmalte de Gel Blanco,600,,Disponible,,
-MANICURA•PEDICURA,Cover Beige,500,,Agotado,,
-MANICURA•PEDICURA,Cover Nude,500,,Agotado,,
-MANICURA•PEDICURA,Cover Pink,500,,Agotado,,
-MANICURA•PEDICURA,Cover Leche,500,,Agotado,,
-MANICURA•PEDICURA,Palitos de Naranjo,15,,Disponible,,
-MANICURA•PEDICURA,Cover Escarchado,400,,Disponible,,
-MANICURA•PEDICURA,Polímeros de Colores,350,,Disponible,,
-MANICURA•PEDICURA,Glitter,200,,Disponible,,
-MANICURA•PEDICURA,Papel de Oro,200,,Disponible,,
-MANICURA•PEDICURA,Ala de Ángel,200,,Disponible,,
-MANICURA•PEDICURA,Caja Uñas 500 pcs,3500,,Agotado,,
-MANICURA•PEDICURA,Paquetes Uñas 120pcs,1200,,Agotado,,
-MANICURA•PEDICURA,Lápiz Pedrería,200,,Disponible,,
-MANICURA•PEDICURA,Pincel para Polygel,700,,Disponible,,
-MANICURA•PEDICURA,Pincel Liner,300,,Agotado,,
-MANICURA•PEDICURA,Cristales Paquete,600,,Agotado,,
-MANICURA•PEDICURA,Cristales Caja,1500,,Agotado,,
-MANICURA•PEDICURA,Calcomanías Agua,50,,Disponible,,
-MANICURA•PEDICURA,Calcomanías Gel Pequeñas,100,,Disponible,,
-MANICURA•PEDICURA,Calcomanías Gel Grandes,250,,Disponible,,
-MANICURA•PEDICURA,Concha Nácar,600,500,Disponible,,
-MANICURA•PEDICURA,Joyas Metálicas,150,,Disponible,,Par
-MANICURA•PEDICURA,Joyas Plásticas,50,,Disponible,,Par
-MANICURA•PEDICURA,Lazos Plásticos,50,,Disponible,,Par
-MANICURA•PEDICURA,Lazos Plásticos Pequeños,25,,Disponible,,Par
-MANICURA•PEDICURA,Joyas Metálicas Pequeñas,50,,Disponible,,Par
-MANICURA•PEDICURA,Punta para Lijas,300,,Disponible,,
-MANICURA•PEDICURA,Fresa 5 en 1,1500,,Agotado,,
-MANICURA•PEDICURA,Fresa Cerámica,800,,Disponible,,
-MANICURA•PEDICURA,Billetes Decoración,50,,Disponible,,
-PELUQUERÍA,Tinte Criollo Negro,100,,Disponible,,Venta por onzas
-PELUQUERÍA,Tinte Criollo Caoba,100,,Disponible,,Venta por onzas
-PELUQUERÍA,Tinte Criollo Rojo,100,,Agotado,,Venta por onzas
-PELUQUERÍA,Peróxido 30 vol,200,,Disponible,,Venta por onzas
-PELUQUERÍA,Peróxido 20 vol,200,,Agotado,,Venta por onzas
-MISCELÁNEAS,Bolsas Regalo Medianas,100,,Disponible,,
-MISCELÁNEAS,Bolsas Regalo Pequeñas,20,,Disponible,,
-MISCELÁNEAS,Globos Metálicos 5 pulgadas,50,,Disponible,,
-MISCELÁNEAS,Globos Metálicos Rosa,250,,Disponible,,
-MISCELÁNEAS,Globos Metálicos San Valentín,250,,Disponible,,
-MISCELÁNEAS,Globos Metálicos Mamá,250,,Disponible,,
-MISCELÁNEAS,Teto Entrenador para Frutas,1000,800,Disponible,,
-MISCELÁNEAS,Filtro Fregadero,400,,Disponible,,
-MISCELÁNEAS,Bombillito Velador,300,,Disponible,,
-MISCELÁNEAS,Pica Especies,3000,,Disponible,,
-ROPA·CALZADO·ACCESORIOS,Hebillas Sujetador,100,,Disponible,,
-ROPA·CALZADO·ACCESORIOS,Blumer,400,,Disponible,,
-ROPA·CALZADO·ACCESORIOS,Pantalón Vestir M,5000,,Disponible,,
-ROPA·CALZADO·ACCESORIOS,Bikini XS,3000,,Disponible,,
-ROPA·CALZADO·ACCESORIOS,Vestido Terciopelo Estampado,3500,,Disponible,,
-ROPA·CALZADO·ACCESORIOS,Body,2500,,Disponible,,
-MISCELÁNEAS,Minas 0.5,100,,Disponible,,10 Unidades
-MISCELÁNEAS,Minas 0.7,100,,Disponible,,10 Unidades
-MISCELÁNEAS,Calcomanías Multiuso,40,,Disponible,,
-MISCELÁNEAS,Llaves para SIM,100,50,Disponible,,
-MISCELÁNEAS,Pulsas Tejidas,500,400,Disponible,,2 Unidades
-MISCELÁNEAS,Agujas Coser,20,,Disponible,,
-BISUTERÍA,Broches Girasol,500,,Disponible,,
-BISUTERÍA,Piercing Nariz,250,,Disponible,,
-BISUTERÍA,Piercings Variados,800,500,Disponible,,
-MAQUILLAJE,Pinzas Ceja,250,,Disponible,,
-BISUTERÍA,Aretes Silicona,100,50,Disponible,,
-PELUQUERÍA,Redecilla doble,300,,Disponible,,
-PELUQUERÍA,Felpas,20,,Disponible,,
-PELUQUERÍA,Felpas finas Paquete,100,,Disponible,,10 Unidades
-SEXSHOP,Funda Silicona con Relieves,500,300,Disponible,,
-SEXSHOP,Vibrador Ballena,6000,,Agotado,,
-SEXSHOP,Anillo Pene,1000,,Agotado,,
-SEXSHOP,Consolador Vibrador,15000,,Agotado,,
-SEXSHOP,Condones Naturales,50,,Agotado,,
-SEXSHOP,Condones Saborizados,50,,Agotado,,
-SEXSHOP,Lubricante,2500,,Agotado,,
-MANUALIDADES·REGALOS PERSONALIZADOS,Llaveros Signos,500,,Disponible,,Material: Resina Epóxica
-MANUALIDADES·REGALOS PERSONALIZADOS,Llaveros Personalizados,1500,,Disponible,,Por Encargo Material: Resina Epóxica
-MANUALIDADES·REGALOS PERSONALIZADOS,Lapiceros Personalizados,1000,,Disponible,,Por Encargo Material: Resina Epóxica
-MANUALIDADES·REGALOS PERSONALIZADOS,Cajitas Regalo Decoradas,150,,Disponible,,
-MANUALIDADES·REGALOS PERSONALIZADOS,Cestas Flores Foami Pequeñas,500,,Disponible,,
-MANUALIDADES·REGALOS PERSONALIZADOS,Mini Joyeros Decorados,300,250,Disponible,,
-MANUALIDADES·REGALOS PERSONALIZADOS,Llaveros Tejidos,500,,Disponible,,
-PELUQUERÍA,Felpas Lazo,250,,Disponible,,
-ROPA·CALZADO·ACCESORIOS,Cintos finos,1500,,Agotado,,
-PELUQUERÍA,Shampú Matizador Morado,700,,Disponible,,
-PELUQUERÍA,Shampú Matizador Azul,700,,Disponible,,
-PELUQUERÍA,Mascarilla Matizadora Morada,700,,Agotada,,
-PELUQUERÍA,Mascarilla Matizadora Azul,700,,Disponible,,
-MANICURA•PEDICURA,Esmaltes de Gel 10ml,600,,Disponible,,
-MANICURA•PEDICURA,Piedras grandes,250,200,Disponible,,
+MISCELÁNEAS,Agujas Coser,20,,Disponible,imagenes/agujas-coser.jpg,
+MANICURA•PEDICURA,Ala de Ángel,200,,Disponible,imagenes/ala-de-angel.jpg,
+SEXSHOP,Anillo Pene,1000,,Agotado,imagenes/anillo-pene.jpg,
+BISUTERÍA,Anillos de Acero Inoxidable,700,500,Disponible,imagenes/anillos-de-acero-inoxidable.jpg,
+BISUTERÍA,Aretes de Resina Epóxica,600,,Disponible,imagenes/aretes-de-resina-epoxica.jpg,
+BISUTERÍA,Aretes Silicona,100,50,Disponible,imagenes/aretes-de-silicona.jpg,
+ROPA·CALZADO·ACCESORIOS,Bikini XS,3000,,Disponible,imagenes/bikini-xs.jpg,
+MANICURA•PEDICURA,Billetes Decoración,50,,Disponible,imagenes/billetes-decoracion.jpg,
+MANICURA•PEDICURA,Bloques,200,,Disponible,imagenes/bloques.jpg,
+ROPA·CALZADO·ACCESORIOS,Blumer,400,,Disponible,imagenes/blumer.jpg,
+ROPA·CALZADO·ACCESORIOS,Body,2500,,Disponible,imagenes/body.jpg,
+MISCELÁNEAS,Bolsas Regalo Medianas,100,,Disponible,imagenes/bolsas-regalo-medianas.jpg,
+MISCELÁNEAS,Bolsas Regalo Pequeñas,20,,Disponible,imagenes/bolsas-regalo-pequeñas.jpg,
+MISCELÁNEAS,Bombillito Velador,300,,Disponible,imagenes/bombillito-velador.jpg,
+PELUQUERÍA,Botox Vegano,400,,Disponible,imagenes/botox-vegano.jpg,Venta por onza
+BISUTERÍA,Broches Girasol,500,,Disponible,imagenes/broches-girasol.jpg,
+MANICURA•PEDICURA,Caja Uñas 500pcs,3500,,Agotado,imagenes/caja-uñas-500pcs.jpg,
+MANUALIDADES·REGALOS PERSONALIZADOS,Cajitas Regalo Decoradas,150,,Disponible,imagenes/cajitas-regalo-decoradas.jpg,
+MANICURA•PEDICURA,Calcomanías Agua,50,,Disponible,imagenes/calcomanias-agua.jpg,
+MANICURA•PEDICURA,Calcomanías Gel Grandes,250,,Disponible,imagenes/calcomanias-gel-grandes.jpg,
+MANICURA•PEDICURA,Calcomanías Gel Pequeñas,100,,Disponible,imagenes/calcomanias-gel-pequeñas.jpg,
+MISCELÁNEAS,Calcomanías Multiuso,40,,Disponible,imagenes/calcomanias-multiuso.jpg,
+MANUALIDADES·REGALOS PERSONALIZADOS,Cestas Flores Foami Pequeñas,500,,Disponible,imagenes/cestas-flores-foami-pequeñas.jpg,
+ROPA·CALZADO·ACCESORIOS,Cintos finos,1500,,Agotado,imagenes/cintos-finos.jpg,
+PERFUMERÍA,Colonias,2500,,Disponible,imagenes/colonias.jpg,
+MANICURA•PEDICURA,Concha Nácar,600,500,Disponible,imagenes/concha-nacar.jpg,
+SEXSHOP,Condones Naturales,50,,Agotado,imagenes/condones-naturales.jpg,
+SEXSHOP,Condones Saborizados,50,,Agotado,imagenes/condones-saborizados.jpg,
+SEXSHOP,Consolador Vibrador,15 000,,Agotado,imagenes/consolador-vibrador.jpg,
+MANICURA•PEDICURA,Cover Beige,500,,Agotado,imagenes/cover-beige.jpg,
+MANICURA•PEDICURA,Cover Escarchado,400,,Disponible,imagenes/cover-escarchado.jpg,
+MANICURA•PEDICURA,Cover Leche,500,,Agotado,imagenes/cover-leche.jpg,
+MANICURA•PEDICURA,Cover Nude,500,,Agotado,imagenes/cover-nude.jpg,
+MANICURA•PEDICURA,Cover Pink,500,,Agotado,imagenes/cover-pink.jpg,
+MANICURA•PEDICURA,Cristales Caja,1500,,Agotado,imagenes/cristales-caja.jpg,
+MANICURA•PEDICURA,Cristales Paquete,600,,Agotado,imagenes/cristales-paquete.jpg,
+MANICURA•PEDICURA,Esmalte de Gel Blanco,600,,Disponible,imagenes/esmalte-de-gel-blanco.jpg,
+MANICURA•PEDICURA,Esmaltes de Gel 10ml,600,,Disponible,imagenes/esmaltes-de-gel-10ml.jpg,
+MANICURA•PEDICURA,Esmaltes Naturales 10-11ml,300,,Disponible,imagenes/esmaltes-naturales-10-11ml.jpg,
+MANICURA•PEDICURA,Esmaltes Naturales 12-14ml,350,,Disponible,imagenes/esmaltes-naturales-12-14ml.jpg,
+MANICURA•PEDICURA,Esmaltes Naturales 15ml,400,,Disponible,imagenes/esmaltes-naturales-15ml.jpg,
+PELUQUERÍA,Felpas,20,,Disponible,imagenes/felpas.jpg,
+PELUQUERÍA,Felpas finas Paquete,100,,Disponible,imagenes/felpas-finas-paquete.jpg,10 Unidades
+PELUQUERÍA,Felpas Lazo,250,,Disponible,imagenes/felpas-lazo.jpg,
+MISCELÁNEAS,Filtro Fregadero,400,,Disponible,imagenes/filtro-fregadero.jpg,
+MANICURA•PEDICURA,Fresa 5 en 1,1500,,Agotado,imagenes/fresa-5-en-1.jpg,
+MANICURA•PEDICURA,Fresa Cerámica,800,,Disponible,imagenes/fresa-ceramica.jpg,
+SEXSHOP,Funda Silicona con Relieves,500,300,Disponible,imagenes/funda-silicona-con-relieves.jpg,
+MANICURA•PEDICURA,Glitter,200,,Disponible,imagenes/glitter.jpg,
+MISCELÁNEAS,Globos Metálicos 5 pulgadas,50,,Disponible,imagenes/globos-metalicos-5-pulgadas.jpg,
+MISCELÁNEAS,Globos Metálicos Mamá,250,,Disponible,imagenes/globos-metalicos-mama.jpg,
+MISCELÁNEAS,Globos Metálicos Rosa,250,,Disponible,imagenes/globos-metalicos-rosa.jpg,
+MISCELÁNEAS,Globos Metálicos San Valentín,250,,Disponible,imagenes/globos-metalicos-san-valentin.jpg,
+PELUQUERÍA,Guantes,100,,Disponible,imagenes/guantes.jpg,Par
+ROPA·CALZADO·ACCESORIOS,Hebillas Sujetador,100,,Disponible,imagenes/hebillas-sujetador.jpg,
+MANICURA•PEDICURA,Joyas Metálicas,150,,Disponible,imagenes/joyas-metalicas.jpg,Par
+MANICURA•PEDICURA,Joyas Metálicas Pequeñas,50,,Disponible,imagenes/joyas-metalicas-pequeñas.jpg,Par
+MANICURA•PEDICURA,Joyas Plásticas,50,,Disponible,imagenes/joyas-plasticas.jpg,Par
+PELUQUERÍA,Keratina Revolution,500,,Disponible,imagenes/keratina-revolution.jpg,Venta por onza
+MANUALIDADES·REGALOS PERSONALIZADOS,Lapiceros Personalizados,1000,,Disponible,imagenes/lapiceros-personalizados.jpg,Por Encargo Material: Resina Epóxica
+MAQUILLAJE,Lápiz labial,300,250,Disponible,imagenes/lapiz-labial.jpg,
+MANICURA•PEDICURA,Lápiz Pedrería,200,,Disponible,imagenes/lapiz-pedreria.jpg,
+MANICURA•PEDICURA,Lazos Plásticos,50,,Disponible,imagenes/lazos-plasticos.jpg,Par
+MANICURA•PEDICURA,Lazos Plásticos Pequeños,25,,Disponible,imagenes/lazos-plasticos-pequeños.jpg,Par
+MANICURA•PEDICURA,Lijas Cartón,30,,Disponible,imagenes/lijas-carton.jpg,
+MANICURA•PEDICURA,Limas 100/120,250,,Disponible,imagenes/limas-100120.jpg,
+MANICURA•PEDICURA,Limas 80/100,250,,Disponible,imagenes/limas-80100.jpg,
+MANUALIDADES·REGALOS PERSONALIZADOS,Llaveros Personalizados,1500,,Disponible,imagenes/llaveros-personalizados.jpg,Por Encargo Material: Resina Epóxica
+MANUALIDADES·REGALOS PERSONALIZADOS,Llaveros Signos,500,,Disponible,imagenes/llaveros-signos.jpg,Material: Resina Epóxica
+MANUALIDADES·REGALOS PERSONALIZADOS,Llaveros Tejidos,500,,Disponible,imagenes/llaveros-tejidos.jpg,
+MISCELÁNEAS,Llaves para SIM,100,50,Disponible,imagenes/llaves-para-sim.jpg,
+SEXSHOP,Lubricante,2500,,Agotado,imagenes/lubricante.jpg,
+PELUQUERÍA,Mascarilla Matizadora Azul,700,,Disponible,imagenes/mascarilla-matizadora-azul.jpg,
+PELUQUERÍA,Mascarilla Matizadora Morada,700,,Agotada,imagenes/mascarilla-matizadora-morada.jpg,
+MISCELÁNEAS,Minas 0.5,100,,Disponible,imagenes/minas-05.jpg,10 Unidades
+MISCELÁNEAS,Minas 0.7,100,,Disponible,imagenes/minas-07.jpg,10 Unidades
+MANUALIDADES·REGALOS PERSONALIZADOS,Mini Joyeros Decorados,300,250,Disponible,imagenes/mini-joyeros-decorados.jpg,
+MANICURA•PEDICURA,Monómero secado medio,500,,Disponible,imagenes/monomero-secado-medio.jpg,Venta por onza
+MANICURA•PEDICURA,Palitos de Naranjo,15,,Disponible,imagenes/palitos-de-naranjo.jpg,
+ROPA·CALZADO·ACCESORIOS,Pantalón Vestir M,5000,,Disponible,imagenes/pantalón-vestir-m.jpg,
+MANICURA•PEDICURA,Papel de Oro,200,,Disponible,imagenes/papel-de-oro.jpg,
+MANICURA•PEDICURA,Paquetes Uñas 120pcs,1200,,Agotado,imagenes/paquetes-uñas-120pcs.jpg,
+MANICURA•PEDICURA,Pegamento Pequeño,100,,Disponible,imagenes/pegamento-pequeño.jpg,
+PERFUMERÍA,Perfume Black Flower,3500,,Disponible,imagenes/perfume-black-flower.jpg,
+PELUQUERÍA,Peróxido 20 vol,200,,Agotado,imagenes/peroxido-20-vol.jpg,Venta por onzas
+PELUQUERÍA,Peróxido 30 vol,200,,Disponible,imagenes/peroxido-30-vol.jpg,Venta por onzas
+PELUQUERÍA,Peróxido 40 vol,200,,Disponible,imagenes/peroxido-40-vol.jpg,Venta por onza
+MISCELÁNEAS,Pica Especies,3000,,Disponible,imagenes/pica-especies.jpg,
+MANICURA•PEDICURA,Piedras grandes,250,200,Disponible,imagenes/piedras-grandes.jpg,
+BISUTERÍA,Piercing Nariz,250,,Disponible,imagenes/piercing-nariz.jpg,
+BISUTERÍA,Piercings Variados,800,500,Disponible,imagenes/piercings-variados.jpg,
+MANICURA•PEDICURA,Pincel Liner,300,,Agotado,imagenes/pincel-liner.jpg,
+MANICURA•PEDICURA,Pincel para Polygel,700,,Disponible,imagenes/pincel-para-polygel.jpg,
+MAQUILLAJE,Pinzas Ceja,250,,Disponible,imagenes/pinzas-ceja.jpg,
+MANICURA•PEDICURA,Polímero acrílico Transparente,500,,Disponible,imagenes/polimero-acrilico-transparente.jpg,Venta por onza
+MANICURA•PEDICURA,Polímeros de Colores,350,,Disponible,imagenes/polimeros-de-colores.jpg,
+PELUQUERÍA,Polvo Decolorante,300,,Disponible,imagenes/polvo-decolorante.jpg,Venta por onza
+MISCELÁNEAS,Pulsas Tejidas,500,400,Disponible,imagenes/pulsas-tejidas.jpg,2 Unidades
+MANICURA•PEDICURA,Punta para Lijas,300,,Disponible,imagenes/punta-para-lijas.jpg,
+PELUQUERÍA,Redecilla doble,300,,Disponible,imagenes/redecilla-doble.jpg,
+PELUQUERÍA,Shampú Matizador Azul,700,,Disponible,imagenes/shampu-matizador-azul.jpg,
+PELUQUERÍA,Shampú Matizador Morado,700,,Disponible,imagenes/shampu-matizador-morado.jpg,
+MISCELÁNEAS,Teto Entrenador para Frutas,1000,800,Disponible,imagenes/teto-entrenador-para-frutas.jpg,
+PELUQUERÍA,Tinte Criollo Caoba,100,,Disponible,imagenes/tinte-criollo-caoba.jpg,Venta por onzas
+PELUQUERÍA,Tinte Criollo Negro,100,,Disponible,imagenes/tinte-criollo-negro.jpg,Venta por onzas
+PELUQUERÍA,Tinte Criollo Rojo,100,,Agotado,imagenes/tinte-criollo-rojo.jpg,Venta por onzas
+MANICURA•PEDICURA,Top Coat 10ml,650,,Agotado,imagenes/top-coat-10ml.jpg,
+MANICURA•PEDICURA,Top Coat 15ml,950,,Agotado,imagenes/top-coat-15ml.jpg,
+MANICURA•PEDICURA,Top Coat Natural 10-11ml,300,,Disponible,imagenes/top-coat-natural-1011ml.jpg,
+MANICURA•PEDICURA,Top Coat Natural 12-14ml,350,,Disponible,imagenes/top-coat-natural-1214ml.jpg,
+MANICURA•PEDICURA,Top Coat Natural 15ml,400,,Disponible,imagenes/top-coat-natural-15ml.jpg,
+ROPA·CALZADO·ACCESORIOS,Vestido Terciopelo Estampado,3500,,Disponible,imagenes/vestido-terciopelo-estampado.jpg,
+SEXSHOP,Vibrador Ballena,6000,,Agotado,imagenes/vibrador-ballena.jpg,
+PELUQUERÍA,Tintes Bibracare,700,,Agotado,imagenes/tintes-bibracare.jpg,
+GYM,Bandas cabello,300,250,Disponible,imagenes/bandas-cabello.jpg,Colores variados
+GYM,Enterizo Gris,3500,,Agotado,imagenes/enterizo-gris.jpg,
+GYM,Guantillas,3000,,Agotado,imagenes/guantillas.jpg,
+GYM,Almohadilla,4000,,Agotado,imagenes/almohadilla.jpg,
+GYM,Pomos,2500,,Agotado,imagenes/pomos.jpg,
+GYM,Estera,4000,,Agotado,imagenes/estera.jpg,
+GYM,Tobilleras,4000,,Agotado,imagenes/tobillera.jpg,Par
+GYM,Creatina Monohidratada 500g,45 USD,,Agotado,imagenes/creatina-monohidratada-500g.jpg,100 Servicios Por encargo
+GYM,Licras,2000,1800,Agotado,imagenes/licras.jpg,
