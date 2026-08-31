@@ -357,7 +357,6 @@
 <body>
 
     <header>
-        <!-- Reemplazar '1001735127.png' por el nombre exacto de la imagen con humo que subas a GitHub -->
         <img src="1001735127.png" alt="Aquelarre Beauty Concept Store" class="logo-banner">
         <p class="store-tagline">Beauty Concept Store</p>
     </header>
@@ -416,7 +415,7 @@
     </footer>
 
     <script>
-        const SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTE2kFqC6R9s9X5h5W6mQ/pub?output=csv';
+        const SHEET_URL = 'productos.csv';
 
         let allProducts = [];
         let currentCategory = 'TODOS';
@@ -424,8 +423,10 @@
 
         async function loadCatalog() {
             try {
-                let response = await fetch(SHEET_URL).catch(() => fetch('articulos.csv'));
-                if (!response.ok) response = await fetch('articulos.csv');
+                let response = await fetch(SHEET_URL);
+                if (!response.ok) {
+                    response = await fetch('productos.csv');
+                }
                 const data = await response.text();
                 parseCSV(data);
             } catch (error) {
@@ -439,11 +440,14 @@
 
             allProducts = [];
             for (let i = 1; i < lines.length; i++) {
-                if (!lines[i].trim()) continue;
-                const row = lines[i].split(/,|\t/).map(val => val.trim().replace(/^"|"$/g, ''));
-                if (row.length >= 2) {
+                const line = lines[i].trim();
+                if (!line) continue;
+
+                const row = line.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/).map(val => val.trim().replace(/^"|"$/g, ''));
+
+                if (row.length >= 6) {
                     allProducts.push({
-                        categoria: row[0] || 'General',
+                        categoria: row[0] || 'GENERAL',
                         nombre: row[1] || '',
                         precio: row[2] || '0',
                         precioRebaja: row[3] || '',
@@ -502,7 +506,9 @@
                 card.className = 'product-card';
                 card.onclick = () => openModal(p);
                 
-                const imgTag = p.imagen ? `<img src="${p.imagen}" alt="${p.nombre}" class="product-img" onerror="this.style.display='none'">` : '';
+                const imgTag = p.imagen 
+                    ? `<img src="${p.imagen}" alt="${p.nombre}" class="product-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/150/000000/d4af37?text=Sin+Imagen';">` 
+                    : '';
 
                 card.innerHTML = `
                     ${imgTag}
@@ -510,7 +516,7 @@
                         <div class="product-name">${p.nombre}</div>
                         <div class="product-desc">${p.descripcion}</div>
                         <div class="product-price">$${p.precio} CUP</div>
-                        <button class="add-cart-btn" onclick="addToCart(event, '${p.nombre}', '${p.precio}')">+ AÑADIR</button>
+                        <button class="add-cart-btn" onclick="addToCart(event, '${p.nombre.replace(/'/g, "\\'")}', '${p.precio}')">+ AÑADIR</button>
                     </div>
                 `;
                 container.appendChild(card);
