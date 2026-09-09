@@ -15,6 +15,7 @@
             --white: #ffffff;
             --text-muted: #a1a1aa;
             --border-gold: rgba(212, 175, 55, 0.3);
+            --sale-red: #ff4d4d;
         } 
 
         * {
@@ -33,7 +34,7 @@
             padding-bottom: 80px;
         } 
 
-        /* HEADER & BANNER COMPLETO CON HUMO */
+        /* HEADER & BANNER */
         header {
             padding: 20px 15px 10px;
             text-align: center;
@@ -83,62 +84,92 @@
             padding: 0 15px;
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 25px;
         } 
 
-        @media (min-width: 768px) {
-            .main-layout {
-                display: grid;
-                grid-template-columns: 240px 1fr;
-                align-items: start;
-            }
+        /* MENÚ DE CATEGORÍAS CON IMÁGENES */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 12px;
+            margin-bottom: 10px;
         } 
 
-        /* CATEGORIAS */
-        .categories-list {
+        .category-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-gold);
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
             display: flex;
             flex-direction: column;
-            gap: 8px;
-            background: var(--card-bg);
-            padding: 15px;
-            border-radius: 12px;
-            border: 1px solid var(--border-gold);
+            align-items: center;
         } 
 
-        .category-btn {
-            background: transparent;
-            border: none;
+        .category-card:hover, .category-card.active {
+            border-color: var(--gold);
+            box-shadow: 0 0 12px rgba(212, 175, 55, 0.4);
+            transform: translateY(-3px);
+        } 
+
+        .category-card-img {
+            width: 100%;
+            height: 90px;
+            object-fit: cover;
+            background-color: #000;
+        } 
+
+        .category-card-name {
+            padding: 8px 5px;
+            font-size: 0.8rem;
+            font-weight: 600;
             color: var(--white);
-            padding: 10px 15px;
-            text-align: left;
-            font-size: 0.85rem;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            cursor: pointer;
-            border-radius: 6px;
-            transition: all 0.2s ease;
             text-transform: uppercase;
             font-family: 'Raleway', sans-serif;
+            letter-spacing: 0.5px;
         } 
 
-        .category-btn.active, .category-btn:hover {
-            background-color: rgba(212, 175, 55, 0.15);
+        .category-card.active .category-card-name {
             color: var(--gold);
-            border-left: 3px solid var(--gold);
         } 
 
-        /* PRODUCTOS GRID */
+        /* SECCIÓN TÍTULO Y BOTÓN RESTABLECER */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-gold);
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+
         .section-title {
             font-family: 'Raleway', sans-serif;
             color: var(--gold);
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            border-bottom: 1px solid var(--border-gold);
-            padding-bottom: 5px;
+            font-size: 1.2rem;
             text-transform: uppercase;
             letter-spacing: 1px;
         } 
 
+        .reset-category-btn {
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .reset-category-btn:hover {
+            background: var(--gold);
+            color: var(--bg-black);
+        }
+
+        /* PRODUCTOS GRID */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -154,12 +185,26 @@
             flex-direction: column;
             cursor: pointer;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
+            position: relative;
         } 
 
         .product-card:hover {
             transform: translateY(-3px);
             box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
         } 
+
+        .sale-badge {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background-color: var(--sale-red);
+            color: white;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 3px 6px;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
 
         .product-img {
             width: 100%;
@@ -192,13 +237,29 @@
             overflow: hidden;
         } 
 
-        .product-price {
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: var(--gold);
+        /* ESTILOS PRECIO Y OFERTAS */
+        .product-price-container {
             margin-top: auto;
             padding-top: 5px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .price-original-striked {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-decoration: line-through;
+        }
+
+        .product-price {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--gold);
         } 
+
+        .product-price.on-sale {
+            color: var(--gold-light);
+        }
 
         .add-cart-btn {
             background: transparent;
@@ -355,12 +416,20 @@
     </div> 
 
     <div class="main-layout">
-        <aside class="categories-list" id="categories-container">
-            <!-- Categorías dinámicas -->
-        </aside> 
+        <!-- SECCIÓN DE CATEGORÍAS CON IMÁGENES -->
+        <div>
+            <div class="section-title" style="margin-bottom: 10px;">CATEGORÍAS</div>
+            <div class="categories-grid" id="categories-container">
+                <!-- Categorías dinámicas -->
+            </div>
+        </div>
 
         <main>
-            <h2 id="current-category-title" class="section-title">TODOS LOS PRODUCTOS</h2>
+            <div class="section-header">
+                <h2 id="current-category-title" class="section-title">TODOS LOS PRODUCTOS</h2>
+                <button id="reset-cat-btn" class="reset-category-btn" onclick="selectCategory('TODOS')" style="display:none;">Ver Todo</button>
+            </div>
+            
             <div id="products-container" class="products-grid">
                 <!-- Productos dinámicos -->
             </div>
@@ -458,22 +527,45 @@
         function renderCategories() {
             const container = document.getElementById('categories-container');
             const categoriesSet = new Set(allProducts.map(p => p.categoria));
-            const categories = ['TODOS', ...Array.from(categoriesSet)]; 
+            const categories = Array.from(categoriesSet);
 
             container.innerHTML = '';
+
             categories.forEach(cat => {
-                const btn = document.createElement('button');
-                btn.className = `category-btn ${cat === currentCategory ? 'active' : ''}`;
-                btn.textContent = cat;
-                btn.onclick = () => {
-                    currentCategory = cat;
-                    document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    renderProducts(cat);
-                };
-                container.appendChild(btn);
+                // Busca el primer producto de la categoría que tenga una imagen
+                const prodConImagen = allProducts.find(p => p.categoria === cat && p.imagen);
+                const imgSrc = prodConImagen ? prodConImagen.imagen : 'https://via.placeholder.com/150/000000/d4af37?text=Aquelarre';
+
+                const card = document.createElement('div');
+                card.className = `category-card ${cat === currentCategory ? 'active' : ''}`;
+                card.onclick = () => selectCategory(cat);
+
+                card.innerHTML = `
+                    <img src="${imgSrc}" alt="${cat}" class="category-card-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/150/000000/d4af37?text=Sin+Imagen';">
+                    <div class="category-card-name">${cat}</div>
+                `;
+                container.appendChild(card);
             });
         } 
+
+        function selectCategory(cat) {
+            currentCategory = cat;
+            
+            // Actualizar clase activa en categorías
+            document.querySelectorAll('.category-card').forEach(card => {
+                const name = card.querySelector('.category-card-name').textContent;
+                if(name === cat) {
+                    card.classList.add('active');
+                } else {
+                    card.classList.remove('active');
+                }
+            });
+
+            // Mostrar/Ocultar botón de reinicio
+            document.getElementById('reset-cat-btn').style.display = cat === 'TODOS' ? 'none' : 'block';
+
+            renderProducts(cat);
+        }
 
         function renderProducts(category, filterText = '') {
             const container = document.getElementById('products-container');
@@ -504,13 +596,37 @@
                     ? `<img src="${p.imagen}" alt="${p.nombre}" class="product-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/150/000000/d4af37?text=Sin+Imagen';">` 
                     : ''; 
 
+                // Lógica de Precios y Oferta
+                const tieneOferta = p.precioRebaja && parseFloat(p.precioRebaja) > 0 && parseFloat(p.precioRebaja) < parseFloat(p.precio);
+                const precioFinal = tieneOferta ? p.precioRebaja : p.precio;
+
+                let htmlPrecio = '';
+                let badgeOferta = '';
+
+                if (tieneOferta) {
+                    badgeOferta = `<span class="sale-badge">OFERTA</span>`;
+                    htmlPrecio = `
+                        <div class="product-price-container">
+                            <span class="price-original-striked">$${p.precio} CUP</span>
+                            <span class="product-price on-sale">$${p.precioRebaja} CUP</span>
+                        </div>
+                    `;
+                } else {
+                    htmlPrecio = `
+                        <div class="product-price-container">
+                            <span class="product-price">$${p.precio} CUP</span>
+                        </div>
+                    `;
+                }
+
                 card.innerHTML = `
+                    ${badgeOferta}
                     ${imgTag}
                     <div class="product-info">
                         <div class="product-name">${p.nombre}</div>
                         <div class="product-desc">${p.descripcion}</div>
-                        <div class="product-price">$${p.precio} CUP</div>
-                        <button class="add-cart-btn" onclick="addToCart(event, '${p.nombre.replace(/'/g, "\\'")}', '${p.precio}')">+ AÑADIR</button>
+                        ${htmlPrecio}
+                        <button class="add-cart-btn" onclick="addToCart(event, '${p.nombre.replace(/'/g, "\\'")}', '${precioFinal}')">+ AÑADIR</button>
                     </div>
                 `;
                 container.appendChild(card);
@@ -532,13 +648,25 @@
                 imgEl.style.display = 'none';
             } 
 
+            const tieneOferta = product.precioRebaja && parseFloat(product.precioRebaja) > 0 && parseFloat(product.precioRebaja) < parseFloat(product.precio);
+            const precioFinal = tieneOferta ? product.precioRebaja : product.precio;
+
             document.getElementById('modal-title').textContent = product.nombre;
-            document.getElementById('modal-price').textContent = `$${product.precio} CUP`;
+            
+            if (tieneOferta) {
+                document.getElementById('modal-price').innerHTML = `
+                    <span style="text-decoration: line-through; font-size: 0.9rem; color: var(--text-muted); margin-right: 8px;">$${product.precio} CUP</span>
+                    <span style="color: var(--gold-light); font-weight: 700;">$${product.precioRebaja} CUP</span>
+                `;
+            } else {
+                document.getElementById('modal-price').textContent = `$${product.precio} CUP`;
+            }
+
             document.getElementById('modal-desc').textContent = product.descripcion;
             
             const btn = document.getElementById('modal-add-btn');
             btn.onclick = (e) => {
-                addToCart(e, product.nombre, product.precio);
+                addToCart(e, product.nombre, precioFinal);
                 closeModal();
             }; 
 
