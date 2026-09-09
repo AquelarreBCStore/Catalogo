@@ -475,6 +475,23 @@
     <script>
         const SHEET_URL = 'https://docs.google.com/spreadsheets/d/1e7rtGJHivzDHrE9nW7TeQut34pLcptISSeY6IZSVlsQ/export?format=csv';
 
+        // Mapeo directo de categorías a los nombres de tus imágenes en la carpeta 'imagenes'
+        const categoryImages = {
+            'MISCELÁNEAS': 'imagenes/miscelaneas.jpg',
+            'MANICURA•PEDICURA': 'imagenes/manicurapedicura.jpg',
+            'MANICURA • PEDICURA': 'imagenes/manicurapedicura.jpg',
+            'GYM': 'imagenes/gym.jpg',
+            'SEXSHOP': 'imagenes/sexshop.jpg',
+            'BISUTERÍA': 'imagenes/bisuteria.jpg',
+            'ROPA•CALZADO•ACCESORIOS': 'imagenes/ropaca.jpg',
+            'ROPA • CALZADO • ACCESORIOS': 'imagenes/ropaca.jpg',
+            'PELUQUERÍA': 'imagenes/peluqueria.jpg',
+            'MANUALIDADES·REGALOS PERSONALIZADOS': 'imagenes/manualidadesrp.jpg',
+            'MANUALIDADES · REGALOS PERSONALIZADOS': 'imagenes/manualidadesrp.jpg',
+            'PERFUMERÍA': 'imagenes/perfumeria.jpg',
+            'MAQUILLAJE': 'imagenes/maquillaje.jpg'
+        };
+
         let allProducts = [];
         let currentCategory = 'TODOS';
         let cart = []; 
@@ -532,9 +549,9 @@
             container.innerHTML = '';
 
             categories.forEach(cat => {
-                // Busca el primer producto de la categoría que tenga una imagen
-                const prodConImagen = allProducts.find(p => p.categoria === cat && p.imagen);
-                const imgSrc = prodConImagen ? prodConImagen.imagen : 'https://via.placeholder.com/150/000000/d4af37?text=Aquelarre';
+                // Obtiene la ruta fija mapeada o usa un placeholder si no la encuentra
+                const catUpper = cat.toUpperCase().trim();
+                const imgSrc = categoryImages[catUpper] || 'https://via.placeholder.com/150/000000/d4af37?text=Aquelarre';
 
                 const card = document.createElement('div');
                 card.className = `category-card ${cat === currentCategory ? 'active' : ''}`;
