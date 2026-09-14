@@ -416,11 +416,9 @@
     </div> 
 
     <div class="main-layout">
-        <!-- SECCIÓN DE CATEGORÍAS CON IMÁGENES -->
         <div>
             <div class="section-title" style="margin-bottom: 10px;">CATEGORÍAS</div>
             <div class="categories-grid" id="categories-container">
-                <!-- Categorías dinámicas -->
             </div>
         </div>
 
@@ -431,7 +429,6 @@
             </div>
             
             <div id="products-container" class="products-grid">
-                <!-- Productos dinámicos -->
             </div>
         </main>
     </div> 
@@ -440,7 +437,7 @@
     <div id="product-modal" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal()">&times;</span>
-            <img id="modal-img" src="" class="modal-img">
+            <img id="modal-img" src="" class="modal-img" loading="lazy">
             <h3 id="modal-title" class="modal-title"></h3>
             <div id="modal-price" class="modal-price"></div>
             <p id="modal-desc" class="modal-desc"></p>
@@ -454,7 +451,6 @@
         <span id="cart-summary">VER PEDIDO: 0 Productos</span>
     </div> 
 
-    <!-- FOOTER CON ICONOS DORADOS -->
     <footer>
         <div class="footer-container">
             <a href="tel:+5354688338" class="footer-item">
@@ -475,21 +471,21 @@
     <script>
         const SHEET_URL = 'https://docs.google.com/spreadsheets/d/1e7rtGJHivzDHrE9nW7TeQut34pLcptISSeY6IZSVlsQ/export?format=csv';
 
-        // Mapeo directo de categorías a los nombres de tus imágenes en la carpeta 'imagenes'
+        // Rutas mapeadas directamente a la carpeta de imágenes optimizadas en .webp
         const categoryImages = {
-            'MISCELÁNEAS': 'imagenes/miscelaneas.jpg',
-            'MANICURA•PEDICURA': 'imagenes/manicurapedicura.jpg',
-            'MANICURA • PEDICURA': 'imagenes/manicurapedicura.jpg',
-            'GYM': 'imagenes/gym.jpg',
-            'SEXSHOP': 'imagenes/sexshop.jpg',
-            'BISUTERÍA': 'imagenes/bisuteria.jpg',
-            'ROPA•CALZADO•ACCESORIOS': 'imagenes/ropaca.jpg',
-            'ROPA • CALZADO • ACCESORIOS': 'imagenes/ropaca.jpg',
-            'PELUQUERÍA': 'imagenes/peluqueria.jpg',
-            'MANUALIDADES·REGALOS PERSONALIZADOS': 'imagenes/manualidadesrp.jpg',
-            'MANUALIDADES · REGALOS PERSONALIZADOS': 'imagenes/manualidadesrp.jpg',
-            'PERFUMERÍA': 'imagenes/perfumeria.jpg',
-            'MAQUILLAJE': 'imagenes/maquillaje.jpg'
+            'MISCELÁNEAS': 'imagenes/optimizadas/miscelaneas.webp',
+            'MANICURA•PEDICURA': 'imagenes/optimizadas/manicurapedicura.webp',
+            'MANICURA • PEDICURA': 'imagenes/optimizadas/manicurapedicura.webp',
+            'GYM': 'imagenes/optimizadas/gym.webp',
+            'SEXSHOP': 'imagenes/optimizadas/sexshop.webp',
+            'BISUTERÍA': 'imagenes/optimizadas/bisuteria.webp',
+            'ROPA•CALZADO•ACCESORIOS': 'imagenes/optimizadas/ropaca.webp',
+            'ROPA • CALZADO • ACCESORIOS': 'imagenes/optimizadas/ropaca.webp',
+            'PELUQUERÍA': 'imagenes/optimizadas/peluqueria.webp',
+            'MANUALIDADES·REGALOS PERSONALIZADOS': 'imagenes/optimizadas/manualidadesrp.webp',
+            'MANUALIDADES · REGALOS PERSONALIZADOS': 'imagenes/optimizadas/manualidadesrp.webp',
+            'PERFUMERÍA': 'imagenes/optimizadas/perfumeria.webp',
+            'MAQUILLAJE': 'imagenes/optimizadas/maquillaje.webp'
         };
 
         let allProducts = [];
@@ -549,8 +545,8 @@
             container.innerHTML = '';
 
             categories.forEach(cat => {
-                // Obtiene la ruta fija mapeada o usa un placeholder si no la encuentra
                 const catUpper = cat.toUpperCase().trim();
+                // Usa la versión comprimida WebP o el fallback si falla
                 const imgSrc = categoryImages[catUpper] || 'https://via.placeholder.com/150/000000/d4af37?text=Aquelarre';
 
                 const card = document.createElement('div');
@@ -558,7 +554,7 @@
                 card.onclick = () => selectCategory(cat);
 
                 card.innerHTML = `
-                    <img src="${imgSrc}" alt="${cat}" class="category-card-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/150/000000/d4af37?text=Sin+Imagen';">
+                    <img src="${imgSrc}" alt="${cat}" class="category-card-img" loading="lazy" onerror="this.onerror=null; this.src='https://via.placeholder.com/150/000000/d4af37?text=Sin+Imagen';">
                     <div class="category-card-name">${cat}</div>
                 `;
                 container.appendChild(card);
@@ -568,7 +564,6 @@
         function selectCategory(cat) {
             currentCategory = cat;
             
-            // Actualizar clase activa en categorías
             document.querySelectorAll('.category-card').forEach(card => {
                 const name = card.querySelector('.category-card-name').textContent;
                 if(name === cat) {
@@ -578,7 +573,6 @@
                 }
             });
 
-            // Mostrar/Ocultar botón de reinicio
             document.getElementById('reset-cat-btn').style.display = cat === 'TODOS' ? 'none' : 'block';
 
             renderProducts(cat);
@@ -609,11 +603,11 @@
                 card.className = 'product-card';
                 card.onclick = () => openModal(p);
                 
+                // Incluye loading="lazy" para optimizar la velocidad de carga
                 const imgTag = p.imagen 
-                    ? `<img src="${p.imagen}" alt="${p.nombre}" class="product-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/150/000000/d4af37?text=Sin+Imagen';">` 
+                    ? `<img src="${p.imagen}" alt="${p.nombre}" class="product-img" loading="lazy" onerror="this.onerror=null; this.src='https://via.placeholder.com/150/000000/d4af37?text=Sin+Imagen';">` 
                     : ''; 
 
-                // Lógica de Precios y Oferta
                 const tieneOferta = p.precioRebaja && parseFloat(p.precioRebaja) > 0 && parseFloat(p.precioRebaja) < parseFloat(p.precio);
                 const precioFinal = tieneOferta ? p.precioRebaja : p.precio;
 
