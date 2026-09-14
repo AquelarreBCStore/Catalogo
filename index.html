@@ -471,21 +471,21 @@
     <script>
         const SHEET_URL = 'https://docs.google.com/spreadsheets/d/1e7rtGJHivzDHrE9nW7TeQut34pLcptISSeY6IZSVlsQ/export?format=csv';
 
-        // Rutas mapeadas directamente a la carpeta de imágenes optimizadas en .webp
+        // Rutas mapeadas directamente a tus imágenes originales en la carpeta imagenes/
         const categoryImages = {
-            'MISCELÁNEAS': 'imagenes/optimizadas/miscelaneas.webp',
-            'MANICURA•PEDICURA': 'imagenes/optimizadas/manicurapedicura.webp',
-            'MANICURA • PEDICURA': 'imagenes/optimizadas/manicurapedicura.webp',
-            'GYM': 'imagenes/optimizadas/gym.webp',
-            'SEXSHOP': 'imagenes/optimizadas/sexshop.webp',
-            'BISUTERÍA': 'imagenes/optimizadas/bisuteria.webp',
-            'ROPA•CALZADO•ACCESORIOS': 'imagenes/optimizadas/ropaca.webp',
-            'ROPA • CALZADO • ACCESORIOS': 'imagenes/optimizadas/ropaca.webp',
-            'PELUQUERÍA': 'imagenes/optimizadas/peluqueria.webp',
-            'MANUALIDADES·REGALOS PERSONALIZADOS': 'imagenes/optimizadas/manualidadesrp.webp',
-            'MANUALIDADES · REGALOS PERSONALIZADOS': 'imagenes/optimizadas/manualidadesrp.webp',
-            'PERFUMERÍA': 'imagenes/optimizadas/perfumeria.webp',
-            'MAQUILLAJE': 'imagenes/optimizadas/maquillaje.webp'
+            'MISCELÁNEAS': 'imagenes/miscelaneas.jpg',
+            'MANICURA•PEDICURA': 'imagenes/manicurapedicura.jpg',
+            'MANICURA • PEDICURA': 'imagenes/manicurapedicura.jpg',
+            'GYM': 'imagenes/gym.jpg',
+            'SEXSHOP': 'imagenes/sexshop.jpg',
+            'BISUTERÍA': 'imagenes/bisuteria.jpg',
+            'ROPA•CALZADO•ACCESORIOS': 'imagenes/ropaca.jpg',
+            'ROPA • CALZADO • ACCESORIOS': 'imagenes/ropaca.jpg',
+            'PELUQUERÍA': 'imagenes/peluqueria.jpg',
+            'MANUALIDADES·REGALOS PERSONALIZADOS': 'imagenes/manualidadesrp.jpg',
+            'MANUALIDADES · REGALOS PERSONALIZADOS': 'imagenes/manualidadesrp.jpg',
+            'PERFUMERÍA': 'imagenes/perfumeria.jpg',
+            'MAQUILLAJE': 'imagenes/maquillaje.jpg'
         };
 
         let allProducts = [];
@@ -546,7 +546,6 @@
 
             categories.forEach(cat => {
                 const catUpper = cat.toUpperCase().trim();
-                // Usa la versión comprimida WebP o el fallback si falla
                 const imgSrc = categoryImages[catUpper] || 'https://via.placeholder.com/150/000000/d4af37?text=Aquelarre';
 
                 const card = document.createElement('div');
@@ -603,7 +602,7 @@
                 card.className = 'product-card';
                 card.onclick = () => openModal(p);
                 
-                // Incluye loading="lazy" para optimizar la velocidad de carga
+                // Incluye loading="lazy" para que no sobrecargue la conexión al entrar
                 const imgTag = p.imagen 
                     ? `<img src="${p.imagen}" alt="${p.nombre}" class="product-img" loading="lazy" onerror="this.onerror=null; this.src='https://via.placeholder.com/150/000000/d4af37?text=Sin+Imagen';">` 
                     : ''; 
