@@ -471,22 +471,28 @@
     <script>
         const SHEET_URL = 'https://docs.google.com/spreadsheets/d/1e7rtGJHivzDHrE9nW7TeQut34pLcptISSeY6IZSVlsQ/export?format=csv';
 
-        // Rutas mapeadas directamente a tus imágenes originales en la carpeta imagenes/
+        // Claves normalizadas para mapear directo a imagenes/
         const categoryImages = {
-            'MISCELÁNEAS': 'imagenes/miscelaneas.jpg',
-            'MANICURA•PEDICURA': 'imagenes/manicurapedicura.jpg',
-            'MANICURA • PEDICURA': 'imagenes/manicurapedicura.jpg',
+            'MISCELANEAS': 'imagenes/miscelaneas.jpg',
+            'MANICURAPEDICURA': 'imagenes/manicurapedicura.jpg',
             'GYM': 'imagenes/gym.jpg',
             'SEXSHOP': 'imagenes/sexshop.jpg',
-            'BISUTERÍA': 'imagenes/bisuteria.jpg',
-            'ROPA•CALZADO•ACCESORIOS': 'imagenes/ropaca.jpg',
-            'ROPA • CALZADO • ACCESORIOS': 'imagenes/ropaca.jpg',
-            'PELUQUERÍA': 'imagenes/peluqueria.jpg',
-            'MANUALIDADES·REGALOS PERSONALIZADOS': 'imagenes/manualidadesrp.jpg',
-            'MANUALIDADES · REGALOS PERSONALIZADOS': 'imagenes/manualidadesrp.jpg',
-            'PERFUMERÍA': 'imagenes/perfumeria.jpg',
+            'BISUTERIA': 'imagenes/bisuteria.jpg',
+            'ROPACALZADOACCESORIOS': 'imagenes/ropaca.jpg',
+            'ROPACA': 'imagenes/ropaca.jpg',
+            'PELUQUERIA': 'imagenes/peluqueria.jpg',
+            'MANUALIDADESREGALOSPERSONALIZADOS': 'imagenes/manualidadesrp.jpg',
+            'PERFUMERIA': 'imagenes/perfumeria.jpg',
             'MAQUILLAJE': 'imagenes/maquillaje.jpg'
         };
+
+        // Función que limpia tildes, puntos, viñetas y espacios para comparar correctamente
+        function normalizeCategoryKey(str) {
+            return str
+                .toUpperCase()
+                .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+                .replace(/[^A-Z0-9]/g, "");
+        }
 
         let allProducts = [];
         let currentCategory = 'TODOS';
@@ -545,8 +551,8 @@
             container.innerHTML = '';
 
             categories.forEach(cat => {
-                const catUpper = cat.toUpperCase().trim();
-                const imgSrc = categoryImages[catUpper] || 'https://via.placeholder.com/150/000000/d4af37?text=Aquelarre';
+                const cleanKey = normalizeCategoryKey(cat);
+                const imgSrc = categoryImages[cleanKey] || 'https://via.placeholder.com/150/000000/d4af37?text=Aquelarre';
 
                 const card = document.createElement('div');
                 card.className = `category-card ${cat === currentCategory ? 'active' : ''}`;
@@ -602,7 +608,6 @@
                 card.className = 'product-card';
                 card.onclick = () => openModal(p);
                 
-                // Incluye loading="lazy" para que no sobrecargue la conexión al entrar
                 const imgTag = p.imagen 
                     ? `<img src="${p.imagen}" alt="${p.nombre}" class="product-img" loading="lazy" onerror="this.onerror=null; this.src='https://via.placeholder.com/150/000000/d4af37?text=Sin+Imagen';">` 
                     : ''; 
