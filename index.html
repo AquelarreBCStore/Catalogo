@@ -694,7 +694,16 @@
 
         function addToCart(event, name, price) {
             event.stopPropagation();
-            cart.push({ name, price: parseFloat(price) || 0 });
+            const numericPrice = parseFloat(price) || 0;
+            
+            // Revisa si el producto ya existe en el carrito
+            const existingProduct = cart.find(item => item.name === name);
+            if (existingProduct) {
+                existingProduct.quantity += 1;
+            } else {
+                cart.push({ name, price: numericPrice, quantity: 1 });
+            }
+            
             updateCartUI();
         } 
 
@@ -703,8 +712,9 @@
             const summary = document.getElementById('cart-summary');
             
             if (cart.length > 0) {
-                const total = cart.reduce((sum, item) => sum + item.price, 0);
-                summary.textContent = `VER PEDIDO: ${cart.length} Productos • $${total} CUP`;
+                const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+                const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                summary.textContent = `VER PEDIDO: ${totalItems} Productos • $${totalPrice} CUP`;
                 floatBtn.style.display = 'flex';
             } else {
                 floatBtn.style.display = 'none';
@@ -714,18 +724,23 @@
         function sendWhatsAppOrder() {
             if (cart.length === 0) return;
             
-            let message = "Hola Aquelarre, quisiera hacer el siguiente pedido:\n\n";
+            const phoneNumber = "5350596880";
+            let message = "✨ *NUEVO PEDIDO - AQUELARRE BEAUTY* ✨\n\n";
+            message += "Hola, me gustaría realizar el siguiente pedido:\n\n";
+            
             let total = 0; 
 
             cart.forEach((item, index) => {
-                message += `${index + 1}. ${item.name} - $${item.price} CUP\n`;
-                total += item.price;
+                const subtotal = item.price * item.quantity;
+                total += subtotal;
+                message += `${index + 1}. *${item.name}*\n   └ Cantidad: ${item.quantity} x $${item.price} = *$${subtotal} CUP*\n`;
             }); 
 
-            message += `\n*Total a pagar: $${total} CUP*`;
+            message += `\n💰 *Total a pagar:* *$${total} CUP*`;
+            message += `\n\nQuedo a la espera de la confirmación y los detalles de entrega. ¡Gracias!`;
             
-            const encoded = encodeURIComponent(message);
-            window.open(`https://wa.me/5350596880?text=${encoded}`, '_blank');
+            const encodedMessage = encodeURIComponent(message);
+            window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
         } 
 
         loadCatalog();
