@@ -280,7 +280,7 @@
             color: var(--bg-black);
         } 
 
-        /* MODAL DE PRODUCTO */
+        /* MODALES */
         .modal {
             display: none;
             position: fixed;
@@ -341,6 +341,85 @@
             line-height: 1.4;
             margin-bottom: 15px;
         } 
+
+        /* ESTILOS ESPECÍFICOS CARRITO */
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .cart-item-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            max-width: 60%;
+        }
+
+        .cart-item-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .cart-item-price {
+            font-size: 0.8rem;
+            color: var(--gold);
+        }
+
+        .cart-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cart-btn-qty {
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .cart-btn-qty:hover {
+            background: var(--gold);
+            color: var(--bg-black);
+        }
+
+        .cart-total-box {
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 1px solid var(--gold);
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .btn-whatsapp-send {
+            width: 100%;
+            background: #25d366;
+            color: #fff;
+            border: none;
+            padding: 12px;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-top: 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
 
         /* CARRITO FLOTANTE */
         .cart-float {
@@ -433,7 +512,7 @@
         </main>
     </div> 
 
-    <!-- MODAL VISTA DETALLADA -->
+    <!-- MODAL VISTA DETALLADA PRODUCTO -->
     <div id="product-modal" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal()">&times;</span>
@@ -445,8 +524,26 @@
         </div>
     </div> 
 
+    <!-- MODAL DETALLE DEL CARRITO -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeCartModal()">&times;</span>
+            <h3 class="modal-title"><i class="fa-solid fa-basket-shopping"></i> TU PEDIDO</h3>
+            <div id="cart-items-list">
+                <!-- Se puebla dinámicamente -->
+            </div>
+            <div class="cart-total-box">
+                <span>Total:</span>
+                <span id="cart-modal-total">$0 CUP</span>
+            </div>
+            <button class="btn-whatsapp-send" onclick="sendWhatsAppOrder()">
+                <i class="fa-brands fa-whatsapp"></i> ENVIAR A WHATSAPP
+            </button>
+        </div>
+    </div>
+
     <!-- BOTON CARRITO FLOTANTE -->
-    <div id="cart-float" class="cart-float" onclick="sendWhatsAppOrder()" style="display:none;">
+    <div id="cart-float" class="cart-float" onclick="openCartModal()" style="display:none;">
         <i class="fa-solid fa-basket-shopping"></i>
         <span id="cart-summary">VER PEDIDO: 0 Productos</span>
     </div> 
@@ -471,7 +568,6 @@
     <script>
         const SHEET_URL = 'https://docs.google.com/spreadsheets/d/1e7rtGJHivzDHrE9nW7TeQut34pLcptISSeY6IZSVlsQ/export?format=csv';
 
-        // Claves normalizadas para mapear directo a imagenes/
         const categoryImages = {
             'MISCELANEAS': 'imagenes/miscelaneas.jpg',
             'MANICURAPEDICURA': 'imagenes/manicurapedicura.jpg',
@@ -486,7 +582,6 @@
             'MAQUILLAJE': 'imagenes/maquillaje.jpg'
         };
 
-        // Función que limpia tildes, puntos, viñetas y espacios para comparar correctamente
         function normalizeCategoryKey(str) {
             return str
                 .toUpperCase()
@@ -693,10 +788,9 @@
         } 
 
         function addToCart(event, name, price) {
-            event.stopPropagation();
+            if (event) event.stopPropagation();
             const numericPrice = parseFloat(price) || 0;
             
-            // Revisa si el producto ya existe en el carrito
             const existingProduct = cart.find(item => item.name === name);
             if (existingProduct) {
                 existingProduct.quantity += 1;
@@ -706,6 +800,23 @@
             
             updateCartUI();
         } 
+
+        function changeQuantity(name, delta) {
+            const product = cart.find(item => item.name === name);
+            if (!product) return;
+
+            product.quantity += delta;
+            if (product.quantity <= 0) {
+                cart = cart.filter(item => item.name !== name);
+            }
+            
+            updateCartUI();
+            renderCartModal();
+            
+            if (cart.length === 0) {
+                closeCartModal();
+            }
+        }
 
         function updateCartUI() {
             const floatBtn = document.getElementById('cart-float');
@@ -720,6 +831,45 @@
                 floatBtn.style.display = 'none';
             }
         } 
+
+        function openCartModal() {
+            if (cart.length === 0) return;
+            renderCartModal();
+            document.getElementById('cart-modal').style.display = 'flex';
+        }
+
+        function closeCartModal() {
+            document.getElementById('cart-modal').style.display = 'none';
+        }
+
+        function renderCartModal() {
+            const listContainer = document.getElementById('cart-items-list');
+            listContainer.innerHTML = '';
+            
+            let total = 0;
+            
+            cart.forEach(item => {
+                const subtotal = item.price * item.quantity;
+                total += subtotal;
+
+                const itemRow = document.createElement('div');
+                itemRow.className = 'cart-item';
+                itemRow.innerHTML = `
+                    <div class="cart-item-info">
+                        <span class="cart-item-title">${item.name}</span>
+                        <span class="cart-item-price">$${item.price} CUP c/u</span>
+                    </div>
+                    <div class="cart-controls">
+                        <button class="cart-btn-qty" onclick="changeQuantity('${item.name.replace(/'/g, "\\'")}', -1)">-</button>
+                        <span>${item.quantity}</span>
+                        <button class="cart-btn-qty" onclick="changeQuantity('${item.name.replace(/'/g, "\\'")}', 1)">+</button>
+                    </div>
+                `;
+                listContainer.appendChild(itemRow);
+            });
+
+            document.getElementById('cart-modal-total').textContent = `$${total} CUP`;
+        }
 
         function sendWhatsAppOrder() {
             if (cart.length === 0) return;
